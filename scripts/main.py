@@ -1,5 +1,6 @@
 import os
 import sys
+import csv
 
 replacementTable = {}
 
@@ -16,10 +17,12 @@ def load_replacement_table():
     for root, dirs, files in os.walk("../constants"):
         for file in files:
             if file.endswith(".csv"):
-                with open(os.path.join(root, file), "r", encoding="utf-8") as f:
-                    lines = f.read().splitlines()
-                    for line in lines[2:]:
-                        parts = line.split(",")
+                with open(os.path.join(root, file), "r", encoding="utf-8", newline='') as f:
+                    reader = csv.reader(f)
+                    next(reader, None) # Skip header 1
+                    next(reader, None) # Skip header 2
+                    for parts in reader:
+                        if not parts: continue
                         replacement_text = (
                             parts[1] if sys.argv[1] == "rik"
                             else parts[2]
@@ -109,7 +112,7 @@ for root, dirs, files in os.walk(os.path.join("..", "blocks")):
                     while line_number < len(lines):
                         oldline = lines[line_number]
                         col = lines[line_number].find(replacement_obj.name)
-                        while col != -1:
+                         while col != -1:
                             replacement_obj.adresses.append(
                                 f"{replacement_obj.replacement} -> {replacement_obj.name} "
                                 f"at {root}/{item} line {line_number + 1} col {col + 1}"
@@ -128,6 +131,7 @@ for root, dirs, files in os.walk(os.path.join("..", "blocks")):
 
 # Write patches CSV
 with open("../output/patches.csv", "w", encoding="utf-8") as file:
+
     for key, value in replacementTable.items():
         if len(value.adresses) == 0:
             file.write(f"{key}, {value.name}, No patches\n")
@@ -135,4 +139,3 @@ with open("../output/patches.csv", "w", encoding="utf-8") as file:
             file.write(f"{key}, {value.name}\n")
             for address in value.adresses:
                 file.write(f",,{address}\n")
-
