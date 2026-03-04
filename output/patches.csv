@@ -1,0 +1,4 @@
+%start_position%, %start_position%, No patches
+%end_position%, %end_position%, No patches
+%PC0%, ""Stepcounter"", No patches
+%EM_STOP%, ""em_stop"", No patches
