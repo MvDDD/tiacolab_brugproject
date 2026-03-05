@@ -1,16 +1,22 @@
-%start_position%, %start_position%, No patches
-%end_position%, %end_position%, No patches
-%PC0%, %PC0%
-,,Stepcounter -> %PC0% at ..\blocks\OB/OB100.SCL line 1 col 1
-,,Stepcounter -> %PC0% at ..\blocks\OB/OB100.SCL line 4 col 6
-,,Stepcounter -> %PC0% at ..\blocks\OB/OB100.SCL line 7 col 5
-,,Stepcounter -> %PC0% at ..\blocks\OB/OB100.SCL line 11 col 5
-,,Stepcounter -> %PC0% at ..\blocks\OB/OB100.SCL line 15 col 5
-,,Stepcounter -> %PC0% at ..\blocks\OB/OB100.SCL line 19 col 5
-,,Stepcounter -> %PC0% at ..\blocks\OB/OB100.SCL line 23 col 5
-,,Stepcounter -> %PC0% at ..\blocks\OB/OB100.SCL line 27 col 5
-,,Stepcounter -> %PC0% at ..\blocks\OB/OB100.SCL line 31 col 5
-,,Stepcounter -> %PC0% at ..\blocks\OB/OB100.SCL line 35 col 5
-,,Stepcounter -> %PC0% at ..\blocks\OB/OB100.SCL line 39 col 5
-,,Stepcounter -> %PC0% at ..\blocks\OB/OB100.SCL line 43 col 5
-%EM_STOP%, %EM_STOP%, No patches
+%start_position%,%start_position%,No patches
+%end_position%,%end_position%,No patches
+%BARRIER_CLOSED%,%BARRIER_CLOSED%
+,,"""Gate Closed"" -> %BARRIER_CLOSED% at ..\blocks\FC/validStartState.SCL line 2 col 32"
+%BARRIER_OPEN%,%BARRIER_OPEN%
+,,"""Gate Open"" -> %BARRIER_OPEN% at ..\blocks\FC/validStartState.SCL line 2 col 12"
+,,"""Gate Open"" -> %BARRIER_OPEN% at ..\blocks\FC/validStartState.SCL line 4 col 9"
+%EM_STOP%,%EM_STOP%,No patches
+%PC0%,%PC0%
+,,"""Stepcounter"" -> %PC0% at ..\blocks\FB/main.SCL line 5 col 8"
+,,"""Stepcounter"" -> %PC0% at ..\blocks\FB/main.SCL line 8 col 6"
+,,"""Stepcounter"" -> %PC0% at ..\blocks\FB/main.SCL line 12 col 13"
+,,"""Stepcounter"" -> %PC0% at ..\blocks\FB/main.SCL line 16 col 9"
+,,"""Stepcounter"" -> %PC0% at ..\blocks\FB/main.SCL line 20 col 9"
+,,"""Stepcounter"" -> %PC0% at ..\blocks\FB/main.SCL line 24 col 9"
+,,"""Stepcounter"" -> %PC0% at ..\blocks\FB/main.SCL line 28 col 9"
+,,"""Stepcounter"" -> %PC0% at ..\blocks\FB/main.SCL line 32 col 9"
+,,"""Stepcounter"" -> %PC0% at ..\blocks\FB/main.SCL line 36 col 9"
+,,"""Stepcounter"" -> %PC0% at ..\blocks\FB/main.SCL line 40 col 9"
+,,"""Stepcounter"" -> %PC0% at ..\blocks\FB/main.SCL line 44 col 9"
+,,"""Stepcounter"" -> %PC0% at ..\blocks\FB/main.SCL line 48 col 9"
+,,"""Stepcounter"" -> %PC0% at ..\blocks\OB/OB100.SCL line 3 col 1"
