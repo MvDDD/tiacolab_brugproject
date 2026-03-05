@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CrossReferences xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="TestNamespace1">
+  <Sources>
+    <SourceObject>
+      <Name>system.Main</Name>
+      <Address>%OB1</Address>
+      <Device>PLC_1</Device>
+      <Path>PLC_1\Program blocks</Path>
+      <TypeName>SCL-Organization block</TypeName>
+      <UnderlyingObject>
+        <Name>system.Main</Name>
+        <Type>Siemens.Engineering.SW.Blocks.OB</Type>
+      </UnderlyingObject>
+      <Children />
+      <References>
+        <ReferenceObject>
+          <Address></Address>
+          <Device>PLC_1</Device>
+          <Name>Initial_Call</Name>
+          <Path>PLC_1\Program blocks\system.Main</Path>
+          <TypeName>Bool</TypeName>
+          <UnderlyingObject i:nil="true" />
+          <Locations>
+            <Location>
+              <Access>Read</Access>
+              <Address></Address>
+              <Name></Name>
+              <ReferenceLocation>@system.Main ▶ Program code</ReferenceLocation>
+              <ReferenceType>Uses</ReferenceType>
+              <ReferencedAs i:nil="true" />
+              <ReferencedAsName></ReferencedAsName>
+              <TypeName></TypeName>
+            </Location>
+          </Locations>
+        </ReferenceObject>
+        <ReferenceObject>
+          <Address></Address>
+          <Device>PLC_1</Device>
+          <Name>Remanence</Name>
+          <Path>PLC_1\Program blocks\system.Main</Path>
+          <TypeName>Bool</TypeName>
+          <UnderlyingObject i:nil="true" />
+          <Locations>
+            <Location>
+              <Access>Read</Access>
+              <Address></Address>
+              <Name></Name>
+              <ReferenceLocation>@system.Main ▶ Program code</ReferenceLocation>
+              <ReferenceType>Uses</ReferenceType>
+              <ReferencedAs i:nil="true" />
+              <ReferencedAsName></ReferencedAsName>
+              <TypeName></TypeName>
+            </Location>
+          </Locations>
+        </ReferenceObject>
+        <ReferenceObject>
+          <Address>%FC1</Address>
+          <Device>PLC_1</Device>
+          <Name>Main</Name>
+          <Path>PLC_1\Program blocks</Path>
+          <TypeName>SCL-Function</TypeName>
+          <UnderlyingObject>
+            <Name>Main</Name>
+            <Type>Siemens.Engineering.SW.Blocks.FC</Type>
+          </UnderlyingObject>
+          <Locations>
+            <Location>
+              <Access>Call</Access>
+              <Address></Address>
+              <Name></Name>
+              <ReferenceLocation>@system.Main ▶ Program code</ReferenceLocation>
+              <ReferenceType>Uses</ReferenceType>
+              <ReferencedAs i:nil="true" />
+              <ReferencedAsName></ReferencedAsName>
+              <TypeName></TypeName>
+            </Location>
+          </Locations>
+        </ReferenceObject>
+      </References>
+    </SourceObject>
+  </Sources>
+</CrossReferences>

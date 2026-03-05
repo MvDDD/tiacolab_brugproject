@@ -2,8 +2,9 @@ import os
 import sys
 import csv
 import siemens_tia_scripting as tia
-portal = tia.attach_portal()
-print(portal.get_process_id())
+
+open("./tia.log", "w").close()
+tia.set_logging("./tia.log", False)
 
 blocknames = {
   "system": {
@@ -71,6 +72,8 @@ class Replacement:
 
 
 class Tag:
+    alltags = []
+    memoryCounter = 0
     @staticmethod
     def fromParts(parts):
         type_val = None
@@ -90,6 +93,25 @@ class Tag:
                 parts[6] if len(parts) > 6 else ""
             ])
         return None
+    @staticmethod
+    def getByteSize(type):
+        match type:
+            case "Bool": return 1/8
+            case "Char": return 1
+            case "Byte": return 1
+            case "Word": return 2
+            case "DWord": return 4
+            case "Real": return 4
+            case "LReal": return 8
+            case "USInt": return 1
+            case "Int": return 2
+            case "UDInt": return 4
+            case "Time": return 4
+            case "Date": return 2
+            case "TOD": return 4
+            case "DTL": return 12
+            case "String": return 254
+
 
     def __init__(self, parts):
         self.specialname = parts[0] or None
@@ -97,6 +119,12 @@ class Tag:
         self.type = parts[2]
         self.address = parts[3]
         self.comment = parts[4] or ""
+        self.byteSize = Tag.getByteSize(self.type)
+        # check if the tag fits in the current memory config
+
+        Tag.alltags.append(self)
+
+        
 
 
 def parse_csv(path):
@@ -143,25 +171,14 @@ for root, dirs, files in os.walk("tags"):
 os.makedirs("output", exist_ok=True)
 
 with open("output/tags.csv", "w", encoding="utf-8") as file:
+    writer = csv.writer(file)
     for tag in tags:
-        file.write(
-            f"\"{tag.tagname.replace('\"', '\\"')}\", Default Tagtable, {tag.type}, "
-            f"%{tag.address}, false, false, false, \"{tag.comment}\"\n"
-        )
+        writer.writerow([tag.tagname.strip('"'), "Default Tagtable", tag.type, "false", "false", "false", tag.address, tag.comment])
 
 # Add tags to replacement table
 for tag in reversed(sorted(tags, key=lambda t: len(t.specialname) if t.specialname else 0)):
     if tag.specialname:
         replacementTable[tag.specialname] = Replacement(tag.specialname, tag.tagname)
-
-def getObName(basename):
-    return "main." + blocknames["system"][basename[2:]]["DESCR"].split(".")[1].title()
-
-def getObArgs(basename):
-    return basename
-
-def getFcName(basename):
-    return basename
 
 # Find replacements in blocks
 createdBlocks = set()
@@ -195,19 +212,7 @@ for blocktype in available:
             createdBlocks.add(os.path.relpath(os.path.join(root, "blocks"), item))
             with open(os.path.join("../output/blocks", os.path.relpath(root, "blocks"), item), "w", encoding="utf-8") as file:
                 basename = os.path.splitext(os.path.basename(item))[0]
-                if blocktype == "OB":
-                    name = getObName(basename)
-                    args = getObArgs(basename)
-                    file.write(f'FUNCTION "{name}"\nTITLE = "{name}"\n{{ S7_Optimized_Access := \'TRUE\' }}\nVERSION : 0.1\n\nBEGIN\n')
-                if blocktype == "FC":
-                    name = getFcName(basename)
-                    file.write(f'FUNCTION "{name}"\nTITLE = "{name}"\nVERSION : 0.1\n\nBEGIN\n')
-                
                 file.write(content)
-                if blocktype == "OB":
-                    file.write('END_FUNCTION\n')
-                if blocktype == "FC":
-                    file.write('END_FUNCTION\n')
                 
 
 # Write patches CSV
@@ -222,8 +227,6 @@ with open("../output/patches.csv", "w", encoding="utf-8", newline='') as file:
                 writer.writerow(["", "", address])
 
 
-print(list(createdBlocks))
-import sys;sys.exit(0)
 try:
     portal = tia.attach_portal()
 except Exception as e:
@@ -240,11 +243,58 @@ except Exception as e:
         except Exception as e:
             time.sleep(5)
 
+
+def generate_tagtable_xml(tags):
+    id = 1
+    xml ="""<?xml version="1.0" encoding="utf-8"?>
+                <Document>
+                    <Engineering version="V20" />
+                        <SW.Tags.PlcTagTable ID="0">
+                            <AttributeList>
+                                <Name>Default tag table</Name>
+                            </AttributeList>
+                            <ObjectList>"""
+    for tag in tags:
+        xml += f"""
+            <SW.Tags.PlcTag ID="{(id:=id+1)}" CompositionName="Tags">
+                <AttributeList>
+                    <DataTypeName>{tag.type}</DataTypeName>
+                    <ExternalAccessible>true</ExternalAccessible>
+                    <ExternalVisible>true</ExternalVisible>
+                    <ExternalWritable>true</ExternalWritable>
+                    <LogicalAddress>{tag.address}</LogicalAddress>
+                    <Name>{tag.tagname.strip('\"')}</Name>
+                </AttributeList>
+                <ObjectList>
+                    <MultilingualText ID="{(id:=id+1)}" CompositionName="Comment">
+                        <ObjectList>
+                            <MultilingualTextItem ID="{(id:=id+1)}" CompositionName="Items">
+                                <AttributeList>
+                                  <Culture>en-US</Culture>
+                                  <Text {tag.comment}/>
+                                </AttributeList>
+                            </MultilingualTextItem>
+                        </ObjectList>
+                    </MultilingualText>
+                </ObjectList>
+            </SW.Tags.PlcTag>
+            """
+    xml += """</ObjectList>
+            </SW.Tags.PlcTagTable>
+        </Document>
+    """
+    return xml
+
+os.makedirs(os.path.join(os.getcwd(), "output", "tags"), exist_ok=True)
+with open(os.path.join(os.getcwd(), "output", "tags", "tagtable.xml"), "w", encoding="utf-8") as file:
+    file.write(generate_tagtable_xml(tags))
+    
+
 project = portal.get_project()
 if project is not None:
     project.save()
     project.close()
-print("step 1 done")
+
 import shutil
 shutil.rmtree(os.path.join(os.getcwd(), "output", "project"), ignore_errors=True)
 shutil.copytree(os.path.join(os.getcwd(), "template"), os.path.join(os.getcwd(), "output", "project"))
@@ -253,3 +303,15 @@ project = portal.open_project(os.path.join(os.getcwd(), "output", "project", "te
 plcs = project.get_plcs()
 plc = plcs[0]
 plc.open_device_editor()
+plc.import_blocks(os.path.join(os.getcwd(), "output", "blocks"))
+plc.import_plc_tags(os.path.join(os.getcwd(), "output", "tags"))
+project.save()
+try:
+    for item in plc.get_program_blocks():
+        print(item.get_name(), item.get_path_full(), item.get_property(name="ProgrammingLanguage"), item.is_consistent())
+        item.export_cross_references(target_directorypath=os.path.join(os.getcwd(), "tia-source", "references"), filter=1)
+        sys.exit(0)
+        if not item.is_consistent():
+            item.compile()
+except Exception as e:
+    print(e)

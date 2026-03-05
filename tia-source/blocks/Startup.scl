@@ -1,0 +1,12 @@
+﻿FUNCTION_BLOCK "Startup"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      LostRetentive : Bool;
+      LostRTC : Bool;
+   END_VAR
+
+
+BEGIN
+END_FUNCTION_BLOCK
+

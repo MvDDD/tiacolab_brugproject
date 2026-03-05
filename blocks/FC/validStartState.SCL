@@ -1,4 +1,0 @@
-"validStartState" := TRUE;
-if not (%BARRIER_OPEN% and not %BARRIER_CLOSED%) then
-    "validStartState" := FALSE;
-end_if;

@@ -1,0 +1,10 @@
+﻿ORGANIZATION_BLOCK "system.Main"
+TITLE = "Main Program Sweep (Cycle)"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+
+BEGIN
+	"Main"(Initial_Call := #Initial_Call,
+	       Remanence := #Remanence);
+END_ORGANIZATION_BLOCK
+
