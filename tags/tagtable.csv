@@ -1,9 +1,9 @@
 ,,| ------- rik -----,----------------|,| --------mark --,-----------------|,
 specialname,tagname, type,address,type,address,comment                                                                                         
-%PC0%,"""Stepcounter""",Word,MW100,Word,MW100,
+%PC0%,    """ProgramCounter""",Word,MW100,Word,MW100,
 %EM_STOP%,"""em_stop""",Bool,I0.0,Bool,I0.0,
-,"""Reset Button""",Bool,I0.1,Bool,I0.1,
-,"""Homing sensor""",Bool,I0.2,Bool,I0.2,
+         ,"""Reset Button""",Bool,I0.1,Bool,I0.1,
+         ,"""Homing sensor""",Bool,I0.2,Bool,I0.2,
 %BARRIER_CLOSED%,"""Gate Closed""",Bool,I0.3,,,
 %BARRIER_OPEN%,"""Gate Open""",Bool,I0.4,,,
 ,"""Road_Yellow""",Bool,I0.5,Bool,I0.5,

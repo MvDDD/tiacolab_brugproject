@@ -6,6 +6,11 @@ VERSION : 0.1
       Remanence : Bool;   // =True, if remanent data are available
    END_VAR
 
+%PC0% := 0;
+
+
+
+
 
 BEGIN
 END_FUNCTION

@@ -6,6 +6,8 @@ VERSION : 0.1
       LostRTC : Bool;
    END_VAR
 
+"PC0" := 0;
+
 
 BEGIN
 END_FUNCTION_BLOCK
