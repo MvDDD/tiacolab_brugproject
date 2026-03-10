@@ -6,6 +6,21 @@ import sys
 portalversion = list(sorted([item.split()[1] for item in os.listdir("C:\\Program Files\\Siemens\\Automation") if item.startswith("Portal")], key=lambda s: int(s[1:])))[-1]
 
 
+<<<<<<< Updated upstream
+=======
+
+
+
+
+
+
+
+
+
+
+#import sys;sys.exit(0)
+import siemens_tia_scripting as tia
+>>>>>>> Stashed changes
 #tia.set_logging("./tia.log", False)
 # tia.Enums.ExportFormats.ExternalSource
 # tia.Enums.ExportFormats.SimaticSD
@@ -74,7 +89,7 @@ plcs = project.get_plcs()
 plc = plcs[0]
 plc.open_device_editor()
 # system = plc.get_system_blocks()
-plc.import_blocks(os.path.join(os.getcwd(), "output", "blocks"))
+#plc.import_blocks(os.path.join(os.getcwd(), "output", "blocks"))
 blocks = plc.get_program_blocks()
 tagtables = plc.get_plc_tag_tables()
 datablocks = plc.get_system_blocks()
