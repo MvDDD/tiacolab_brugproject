@@ -1,6 +1,7 @@
 import os
 import sys
 import csv
+import subprocess
 import siemens_tia_scripting as tia
 
 open("./tia.log", "w").close()
@@ -76,22 +77,25 @@ class Tag:
     memoryCounter = 0
     @staticmethod
     def fromParts(parts):
-        type_val = None
-        address = None
-        if sys.argv[1] == "rik":
-            type_val = parts[2]
-            address = parts[3]
-        elif sys.argv[1] == "mark":
-            type_val = parts[4]
-            address = parts[5]
-        if address or type_val:
-            return Tag([
-                parts[0],
-                parts[1],
-                type_val,
-                address,
-                parts[6] if len(parts) > 6 else ""
-            ])
+        try:
+            type_val = None
+            address = None
+            if sys.argv[1] == "rik":
+                type_val = parts[2]
+                address = parts[3]
+            elif sys.argv[1] == "mark":
+                type_val = parts[4]
+                address = parts[5]
+            if address and type_val and parts[1]:
+                return Tag([
+                    parts[0],
+                    parts[1],
+                    type_val,
+                    address,
+                    parts[6] if len(parts) > 6 else ""
+                ])
+        except IndexError as e:
+            print(f"malformed tag: {parts}")
         return None
     @staticmethod
     def getByteSize(type):
@@ -136,7 +140,8 @@ def parse_csv(path):
         next(reader, None)
         next(reader, None)
         for parts in reader:
-            tag = Tag.fromParts(parts)
+            items = [part.strip() for part in parts]
+            tag = Tag.fromParts(items)
             if tag:
                 result.append(tag)
     return result
@@ -208,15 +213,15 @@ for blocktype in available:
                                 line_number += 1
                             line_number += 1
                         content = "\n".join(lines)
-            os.makedirs(os.path.join("../output/blocks", os.path.relpath(root, "blocks")), exist_ok=True)
+            os.makedirs(os.path.join("output/blocks", os.path.relpath(root, "blocks")), exist_ok=True)
             createdBlocks.add(os.path.relpath(os.path.join(root, "blocks"), item))
-            with open(os.path.join("../output/blocks", os.path.relpath(root, "blocks"), item), "w", encoding="utf-8") as file:
+            with open(os.path.join("output/blocks", os.path.relpath(root, "blocks"), item), "w", encoding="utf-8") as file:
                 basename = os.path.splitext(os.path.basename(item))[0]
                 file.write(content)
                 
 
 # Write patches CSV
-with open("../output/patches.csv", "w", encoding="utf-8", newline='') as file:
+with open("output/patches.csv", "w", encoding="utf-8", newline='') as file:
     writer = csv.writer(file)
     for key, value in replacementTable.items():
         if len(value.addresses) == 0:
@@ -231,7 +236,11 @@ try:
     portal = tia.attach_portal()
 except Exception as e:
     # async open proccess (detached from this script)
-    os.startfile(os.path.join(os.getcwd(), "template", "template.ap20"))
+    subprocess.Popen(
+        ["C:/Program Files/siemens/automation/Portal V20/bin/Siemens.Automation.Portal.exe"],
+        creationflags=subprocess.DETACHED_PROCESS | subprocess.CREATE_NEW_PROCESS_GROUP,
+        close_fds=True
+    )
     import time
     connected = False
     portal = None
@@ -306,12 +315,3 @@ plc.open_device_editor()
 plc.import_blocks(os.path.join(os.getcwd(), "output", "blocks"))
 plc.import_plc_tags(os.path.join(os.getcwd(), "output", "tags"))
 project.save()
-try:
-    for item in plc.get_program_blocks():
-        print(item.get_name(), item.get_path_full(), item.get_property(name="ProgrammingLanguage"), item.is_consistent())
-        item.export_cross_references(target_directorypath=os.path.join(os.getcwd(), "tia-source", "references"), filter=1)
-        sys.exit(0)
-        if not item.is_consistent():
-            item.compile()
-except Exception as e:
-    print(e)
