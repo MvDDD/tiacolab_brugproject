@@ -1,16 +1,10 @@
-FUNCTION "Main" : Void
-{ S7_Optimized_Access := 'TRUE' }
-VERSION : 0.1
-   VAR_INPUT 
-      Initial_Call : Bool;   // Initial call of this OB
-      Remanence : Bool;   // =True, if remanent data are available
-   END_VAR
+Initial_Call : Bool;   // Initial call of this OB
+Remanence : Bool;   // =True, if remanent data are available
+RETURN Void;
 
-%PC0% := 0;
-
-
-
-
-
-BEGIN
-END_FUNCTION
+CASE %PC_MAIN% OF
+   0:
+      ;
+   10:
+      ;
+END_CASE;

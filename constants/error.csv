@@ -1,2 +1,4 @@
-NAME, REPLACEMENT
-, mark, rik
+NAME," REPLACEMENT"
+," mark"," rik"
+%E_OK%,0,0
+%E_ERR%,1,1

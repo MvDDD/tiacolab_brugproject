@@ -1,16 +1,12 @@
-FUNCTION "Startup" : Void
-{ S7_Optimized_Access := 'TRUE' }
-VERSION : 0.1
-   VAR_INPUT 
-      LostRetentive : Bool;
-      LostRTC : Bool;
-   END_VAR
+LostRetentive : Bool;
+LostRTC : Bool;
+RETURN Void;
 
+%PC_MAIN% := 0;
+%PC_ERR% := 0;
+%E_CODE% := %E_OK% (* no error on boot *);
 
-
-
-
-
-BEGIN
-END_FUNCTION
-
+// returning values looks like this:
+// "Startup" := 0;
+// assign returnvalue to the file name (without extention)
+// this function does not return a value

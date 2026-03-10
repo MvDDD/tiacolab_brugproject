@@ -1,0 +1,3 @@
+,,| ------- rik -----,----------------|,| --------mark --,-----------------|
+specialname,tagname," type",address,type,address,comment
+%E_CODE%,"""errorstatus""","Word","MW1000","Word",MW1000,error statuscode

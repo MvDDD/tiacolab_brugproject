@@ -1,23 +1,19 @@
-,                                                ,| rik -,-------|,|mark ,--------|,
-specialname         , tagname                    , type  , address, type , address ,  comment                                                                                         
-                    ,                            ,       ,        ,      ,         , INPUTS 
-%PC0%               , """ProgramCounter"""       , Word  , MW100  , Word , MW100   ,  
-%EM_STOP%           , """em_stop"""              , Bool  , I0.0   , Bool , I0.0    ,  
-                    , """Reset Button"""         , Bool  , I0.1   , Bool , I0.1    ,  
-                    , """Homing sensor"""        , Bool  , I0.2   , Bool , I0.2    ,  
-%BARRIER_CLOSED%    , """Gate Closed"""          , Bool  , I0.3   ,      ,         ,  slagboom is open?
-%BARRIER_OPENED%    , """Gate Open"""            , Bool  , I0.4   ,      ,         ,  slagboom is gesloten?
-                    , """LightSwitch Front"""    , Bool  , I1.0   , Bool , I1.0    ,  
-                    , """LightSwitch Middle"""   , Bool  , I1.1   , Bool , I1.1    ,  
-                    , """Start Button"""         , Bool  , I1.2   , Bool , I1.2    ,  
-                    , """Stop Button"""          , Bool  , I1.3   , Bool , I1.3    ,  
-                    ,                            ,       ,        ,      ,         ,  OUTPUTS
-%BARRIER_OPEN%      , """Open Gate"""            , Bool  , Q0.0   , Bool , Q0.0    ,  openen van de slagboom
-                    , """Road_Yellow"""          , Bool  , Q0.1   , Bool , Q0.1    ,  
-                    , """Road_Green"""           , Bool  , Q0.2   , Bool , Q0.2    ,  
-                    , """Road_Red"""             , Bool  , Q0.3   , Bool , Q0.3    ,  
-                    , """Noodstop Rood"""        , Bool  , Q0.4   , Bool , Q0.4    ,  
-                    , """Noodstop Groen"""       , Bool  , Q0.5   , Bool , Q0.5    ,  
-                    ,                            ,       ,        ,      ,         ,  
-                    ,                            ,       ,        ,      ,         ,  
-                    ,                            ,       ,        ,      ,         ,  
+,,| rik -,-------|,"|mark ",--------|,
+specialname,tagname,type,address,type,address,comment
+%PC_MAIN%,"""ProgramCounter""",Word,MW100,Word,MW100,"main program counter"
+%PC_ERR%,"""ErrorCounter""",Word,MW104,Word,MW104,"error stepcounter"
+%EM_STOP%,"""em_stop""",Bool,I0.0,Bool,I0.0,
+,"""Reset Button""",Bool,I0.1,Bool,I0.1,
+,"""Homing sensor""",Bool,I0.2,Bool,I0.2,
+%BARRIER_CLOSED%,"""Gate Closed""",Bool,I0.3,,,"slagboom is open?"
+%BARRIER_OPENED%,"""Gate Open""",Bool,I0.4,,,"slagboom is gesloten?"
+,"""LightSwitch Front""",Bool,I1.0,Bool,I1.0,
+,"""LightSwitch Middle""",Bool,I1.1,Bool,I1.1,
+,"""Start Button""",Bool,I1.2,Bool,I1.2,
+,"""Stop Button""",Bool,I1.3,Bool,I1.3,
+%BARRIER_OPEN%,"""Open Gate""",Bool,Q0.0,Bool,Q0.0,"openen van de slagboom"
+,"""Road_Yellow""",Bool,Q0.1,Bool,Q0.1,
+,"""Road_Green""",Bool,Q0.2,Bool,Q0.2,
+,"""Road_Red""",Bool,Q0.3,Bool,Q0.3,
+,"""Noodstop Rood""",Bool,Q0.4,Bool,Q0.4,
+,"""Noodstop Groen""",Bool,Q0.5,Bool,Q0.5

@@ -1,14 +1,18 @@
-ProgramCounter,Default Tagtable,Word,false,false,false,MW100,
-em_stop,Default Tagtable,Bool,false,false,false,I0.0,
-Reset Button,Default Tagtable,Bool,false,false,false,I0.1,
-Homing sensor,Default Tagtable,Bool,false,false,false,I0.2,
-LightSwitch Front,Default Tagtable,Bool,false,false,false,I1.0,
-LightSwitch Middle,Default Tagtable,Bool,false,false,false,I1.1,
-Start Button,Default Tagtable,Bool,false,false,false,I1.2,
-Stop Button,Default Tagtable,Bool,false,false,false,I1.3,
-Open Gate,Default Tagtable,Bool,false,false,false,Q0.0,openen van de slagboom
-Road_Yellow,Default Tagtable,Bool,false,false,false,Q0.1,
-Road_Green,Default Tagtable,Bool,false,false,false,Q0.2,
-Road_Red,Default Tagtable,Bool,false,false,false,Q0.3,
-Noodstop Rood,Default Tagtable,Bool,false,false,false,Q0.4,
-Noodstop Groen,Default Tagtable,Bool,false,false,false,Q0.5,
+errorstatus,Default Tagtable,Word,false,false,false,MW1000,error statuscode
+ProgramCounter,Default Tagtable,Word,false,false,false,MW100,main program counter
+ErrorCounter,Default Tagtable,Word,false,false,false,MW104,error stepcounter
+em_stop,Default Tagtable,Bool,false,false,false,I0.0,
+Reset Button,Default Tagtable,Bool,false,false,false,I0.1,
+Homing sensor,Default Tagtable,Bool,false,false,false,I0.2,
+Gate Closed,Default Tagtable,Bool,false,false,false,I0.3,slagboom is open?
+Gate Open,Default Tagtable,Bool,false,false,false,I0.4,slagboom is gesloten?
+LightSwitch Front,Default Tagtable,Bool,false,false,false,I1.0,
+LightSwitch Middle,Default Tagtable,Bool,false,false,false,I1.1,
+Start Button,Default Tagtable,Bool,false,false,false,I1.2,
+Stop Button,Default Tagtable,Bool,false,false,false,I1.3,
+Open Gate,Default Tagtable,Bool,false,false,false,Q0.0,openen van de slagboom
+Road_Yellow,Default Tagtable,Bool,false,false,false,Q0.1,
+Road_Green,Default Tagtable,Bool,false,false,false,Q0.2,
+Road_Red,Default Tagtable,Bool,false,false,false,Q0.3,
+Noodstop Rood,Default Tagtable,Bool,false,false,false,Q0.4,
+Noodstop Groen,Default Tagtable,Bool,false,false,false,Q0.5,

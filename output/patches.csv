@@ -1,5 +1,16 @@
+%E_OK%,%E_OK%
+,,0 -> %E_OK% at blocks/Startup.SCL line 7 col 13
+%E_ERR%,%E_ERR%,No patches
 %start_position%,%start_position%,No patches
 %end_position%,%end_position%,No patches
+%BARRIER_OPENED%,%BARRIER_OPENED%,No patches
+%BARRIER_CLOSED%,%BARRIER_CLOSED%,No patches
 %BARRIER_OPEN%,%BARRIER_OPEN%,No patches
 %EM_STOP%,%EM_STOP%,No patches
-%PC0%,%PC0%,No patches
+%PC_MAIN%,%PC_MAIN%
+,,"""ProgramCounter"" -> %PC_MAIN% at blocks/Main.SCL line 5 col 6"
+,,"""ProgramCounter"" -> %PC_MAIN% at blocks/Startup.SCL line 5 col 1"
+%PC_ERR%,%PC_ERR%
+,,"""ErrorCounter"" -> %PC_ERR% at blocks/Startup.SCL line 6 col 1"
+%E_CODE%,%E_CODE%
+,,"""errorstatus"" -> %E_CODE% at blocks/Startup.SCL line 7 col 1"

@@ -1,5 +1,5 @@
 ,,| ------- rik -----,----------------|,| --------mark --,-----------------|,
-specialname,tagname, type,address,type,address,comment   
+specialname,tagname, type,address,type,address,comment
 %START%,"""HMI Start""",Bool,,,,
 %HMI_MAN_OVERR%,"""HMI Manual Override""",Bool,,,,
 ,"""HMI Debug Screen""",Bool,,,,
