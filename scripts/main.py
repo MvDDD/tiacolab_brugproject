@@ -195,7 +195,7 @@ def generate_tia_function_blocks(replacementTable):
 
             with open(out_path, "w", encoding="utf-8") as f:
                 f.write(f'FUNCTION "{file_name}" : {file_returns}\n')
-                f.write("{ S7_Optimized_Access := 'TRUE' }\n")
+                # f.write("{ S7_Optimized_Access := 'TRUE' }\n")
                 f.write("VERSION : 0.1\n")
                 f.write("VAR_INPUT\n")
                 for line in var_input_lines:
