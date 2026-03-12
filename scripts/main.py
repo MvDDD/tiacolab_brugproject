@@ -118,7 +118,7 @@ def load_tags(tags_dir="tags"):
 def generate_tia_function_blocks(replacementTable):
     input_dir="blocks"
     output_dir="output/blocks"
-    
+
     shutil.rmtree(output_dir, ignore_errors=True)
     os.makedirs(output_dir)
 
@@ -185,7 +185,18 @@ def generate_tia_function_blocks(replacementTable):
             os.makedirs(out_dir, exist_ok=True)
             createdBlocks.add(os.path.join(rel_dir, item))
 
-            var_input_lines = header_lines[:-1]
+            vars = {
+                "input":[],
+                "output":[],
+                "inout": [],
+                "temp":[]
+            }
+            var_lines = header_lines[:-1]
+            for line in var_lines:
+                name, type = line.rstrip(";").split(":")
+                if " " in type.strip():
+                    specifier, type = line.strip().split()
+                    vars[specifier].append(f"{name} : {type};")
             return_parts = header_lines[-1].strip().rstrip(";").split()
             file_returns = return_parts[1]
 
@@ -197,10 +208,27 @@ def generate_tia_function_blocks(replacementTable):
                 f.write(f'FUNCTION "{file_name}" : {file_returns}\n')
                 # f.write("{ S7_Optimized_Access := 'TRUE' }\n")
                 f.write("VERSION : 0.1\n")
+
                 f.write("VAR_INPUT\n")
-                for line in var_input_lines:
+                for line in vars["input"]:
                     f.write(f"    {line}\n")
                 f.write("END_VAR\n")
+
+                f.write("VAR_OUTPUT")
+                for line in vars["output"]:
+                    f.write(f"    {line}")
+                f.write("END_VAR\n")
+
+                f.write("VAR_INOUT")
+                for line in vars["inout"]:
+                    f.write(f"    {line}")
+                f.write("END_VAR\n")
+
+                f.write("VAR_TEMP")
+                for line in vars["temp"]:
+                    f.write(f"    {line}")
+                f.write("END_VAR\n")
+
                 f.write("BEGIN\n")
                 f.write("\n".join(body_lines).replace('"""', '"'))
                 f.write("\nEND_FUNCTION\n")

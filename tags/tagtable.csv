@@ -1,7 +1,7 @@
 ,,| rik -,-------|,"|mark ",--------|,
 specialname,tagname,type,address,type,address,comment
-%PC_MAIN%,"""ProgramCounter""",Word,MW100,Word,MW100,main program counter
-%PC_ERR%,"""ErrorCounter""",Word,MW104,Word,MW104,error stepcounter
+%PC_MAIN%,"""ProgramCounter""",Word,MW200,Word,MW200,main program counter
+%PC_ERR%,"""ErrorCounter""",Word,MW204,Word,MW204,error stepcounter
 %EM_STOP%,"""em_stop""",Bool,I0.0,Bool,I0.0,
 ,"""Reset Button""",Bool,I0.1,Bool,I0.1,
 ,"""Homing sensor""",Bool,I0.2,Bool,I0.2,
@@ -17,3 +17,6 @@ specialname,tagname,type,address,type,address,comment
 ,"""Road_Red""",Bool,Q0.3,Bool,Q0.3,
 ,"""Noodstop Rood""",Bool,Q0.4,Bool,Q0.4,
 ,"""Noodstop Groen""",Bool,Q0.5,Bool,Q0.5
+,,,,,,
+%BOAT_NEW_LEFT%,"""Boat Arrived Left""",Bool,MB100.0,Bool,MB100.0,
+%BOAT_NEW_RIGHT%,"""Boat Arrived Right""",Bool,MB100.1,Bool,MB100.1

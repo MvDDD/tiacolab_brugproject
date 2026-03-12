@@ -1,10 +1,7 @@
-LostRetentive : Bool;
-LostRTC : Bool;
+LostRetentive : input Bool;
+LostRTC : input Bool;
 RETURN Void;
 
-%PC_MAIN% := 0;
-%PC_ERR% := 0;
-%E_CODE% := %E_OK% (* no error on boot *);
 
 // returning values looks like this:
 // "Startup" := 0;

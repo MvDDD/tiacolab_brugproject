@@ -1,0 +1,11 @@
+RETURN Void;
+
+CASE %E_CODE% of
+	%E_OK%: // no error: pass
+	;
+	%E_SERVO%:
+		"HMI_ERROR_ADDMESAGE"(%E_SERVO%);
+	;
+	else:
+	;
+END_CASE;

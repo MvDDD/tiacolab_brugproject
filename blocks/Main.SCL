@@ -1,10 +1,13 @@
-Initial_Call : Bool;   // Initial call of this OB
-Remanence : Bool;   // =True, if remanent data are available
+Initial_Call : input Bool;   // Initial call of this OB
+Remanence : input Bool;   // =True, if remanent data are available
 RETURN Void;
 
-CASE %PC_MAIN% OF
-   0:
-      ;
-   10:
-      ;
-END_CASE;
+
+if #Initial_Call then
+    %PC_MAIN% := 0;
+    %PC_ERR% := 0;
+    %E_CODE% := %E_OK% (* no error on boot *);
+END_IF
+
+MAINLOOP();
+ERRORLOOP();
