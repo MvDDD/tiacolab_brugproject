@@ -1,16 +1,30 @@
 %E_OK%,%E_OK%
-,,0 -> %E_OK% at blocks/Startup.SCL line 7 col 13
+,,0 -> %E_OK% at blocks/ERRORLOOP.SCL line 4 col 2
+,,0 -> %E_OK% at blocks/Main.SCL line 9 col 17
 %E_ERR%,%E_ERR%,No patches
 %start_position%,%start_position%,No patches
 %end_position%,%end_position%,No patches
+%STEP_DETECT_BOAT%,%STEP_DETECT_BOAT%
+,,30 -> %STEP_DETECT_BOAT% at blocks/MAINLOOP.SCL line 17 col 5
+%STEP_OPEN_BRIDGE%,%STEP_OPEN_BRIDGE%,No patches
+%STEP_MANUAL_OVERRIDE%,%STEP_MANUAL_OVERRIDE%,No patches
+%STEP_AUTO_MODE%,%STEP_AUTO_MODE%,No patches
+%STEP_AUTO_COUNTER%,%STEP_AUTO_COUNTER%,No patches
+%IS_MARK%,%IS_MARK%,No patches
+%IS_RIK%,%IS_RIK%,No patches
+%BOAT_NEW_RIGHT%,%BOAT_NEW_RIGHT%,No patches
 %BARRIER_OPENED%,%BARRIER_OPENED%,No patches
 %BARRIER_CLOSED%,%BARRIER_CLOSED%,No patches
+%BOAT_NEW_LEFT%,%BOAT_NEW_LEFT%,No patches
 %BARRIER_OPEN%,%BARRIER_OPEN%,No patches
 %EM_STOP%,%EM_STOP%,No patches
 %PC_MAIN%,%PC_MAIN%
-,,"""ProgramCounter"" -> %PC_MAIN% at blocks/Main.SCL line 5 col 6"
-,,"""ProgramCounter"" -> %PC_MAIN% at blocks/Startup.SCL line 5 col 1"
+,,"""ProgramCounter"" -> %PC_MAIN% at blocks/Main.SCL line 7 col 5"
+,,"""ProgramCounter"" -> %PC_MAIN% at blocks/MAINLOOP.SCL line 3 col 6"
+,,"""ProgramCounter"" -> %PC_MAIN% at blocks/MAINLOOP.SCL line 20 col 13"
+,,"""ProgramCounter"" -> %PC_MAIN% at blocks/MAINLOOP.SCL line 34 col 3"
 %PC_ERR%,%PC_ERR%
-,,"""ErrorCounter"" -> %PC_ERR% at blocks/Startup.SCL line 6 col 1"
+,,"""ErrorCounter"" -> %PC_ERR% at blocks/Main.SCL line 8 col 5"
 %E_CODE%,%E_CODE%
-,,"""errorstatus"" -> %E_CODE% at blocks/Startup.SCL line 7 col 1"
+,,"""errorstatus"" -> %E_CODE% at blocks/ERRORLOOP.SCL line 3 col 6"
+,,"""errorstatus"" -> %E_CODE% at blocks/Main.SCL line 9 col 5"

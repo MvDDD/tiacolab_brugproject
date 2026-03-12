@@ -193,10 +193,12 @@ def generate_tia_function_blocks(replacementTable):
             }
             var_lines = header_lines[:-1]
             for line in var_lines:
-                name, type = line.rstrip(";").split(":")
+                name, type = line.split(";")[0].split(":")
+                comment = line.split(";")[1]
                 if " " in type.strip():
-                    specifier, type = line.strip().split()
-                    vars[specifier].append(f"{name} : {type};")
+                    print(type.strip().split())
+                    specifier, type = type.strip().split()
+                    vars[specifier].append(f"{name} : {type};{" "+comment.strip() if comment.strip() else ""}")
             return_parts = header_lines[-1].strip().rstrip(";").split()
             file_returns = return_parts[1]
 

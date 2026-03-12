@@ -1,6 +1,6 @@
 errorstatus,Default Tagtable,Word,false,false,false,MW1000,error statuscode
-ProgramCounter,Default Tagtable,Word,false,false,false,MW100,main program counter
-ErrorCounter,Default Tagtable,Word,false,false,false,MW104,error stepcounter
+ProgramCounter,Default Tagtable,Word,false,false,false,MW200,main program counter
+ErrorCounter,Default Tagtable,Word,false,false,false,MW204,error stepcounter
 em_stop,Default Tagtable,Bool,false,false,false,I0.0,
 Reset Button,Default Tagtable,Bool,false,false,false,I0.1,
 Homing sensor,Default Tagtable,Bool,false,false,false,I0.2,
@@ -16,3 +16,5 @@ Road_Green,Default Tagtable,Bool,false,false,false,Q0.2,
 Road_Red,Default Tagtable,Bool,false,false,false,Q0.3,
 Noodstop Rood,Default Tagtable,Bool,false,false,false,Q0.4,
 Noodstop Groen,Default Tagtable,Bool,false,false,false,Q0.5,
+Boat Arrived Left,Default Tagtable,Bool,false,false,false,MB100.0,
+Boat Arrived Right,Default Tagtable,Bool,false,false,false,MB100.1,
