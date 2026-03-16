@@ -2,6 +2,36 @@ Initial_Call : input Bool;   // Initial call of this OB
 Remanence : input Bool;   // =True, if remanent data are available
 RETURN Void;
 
+if #Initial_Call then
+   %PC_MAIN% := 0;
+end_if;
+
+
+
+CASE %PC_MAIN% OF
+REGION "ERROR"
+   -1: // error state
+       // main does nothing here
+   ;
+END_REGION
+REGION INIT
+   0:  //first step
+      if "ValidBootState"() then       //if boot is allowed in current position/state
+         %PC_MAIN% := 10;              //continue
+         else;                            // else: 
+            %ERR_PC_MAIN% := %PC_MAIN%;   // save current PC_MAIN for possible resume
+            %PC_MAIN% := -1;              // goto error state
+            ;
+            10:
+               
+               ;
+END_REGION
+
+END_CASE;
+
+REGION threads
+
+END_REGION
 
 if #Initial_Call then
     %PC_MAIN% := 0;

@@ -20,3 +20,4 @@ specialname,tagname,type,address,type,address,comment
 ,,,,,,
 %BOAT_NEW_LEFT%,"""Boat Arrived Left""",Bool,MB100.0,Bool,MB100.0,
 %BOAT_NEW_RIGHT%,"""Boat Arrived Right""",Bool,MB100.1,Bool,MB100.1
+%ERR_PC_MAIN%,"""ProgramCounterTrace""",Word,MW108,Bool,MW108
