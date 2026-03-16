@@ -4,8 +4,6 @@ ErrorCounter,Default Tagtable,Word,false,false,false,MW204,error stepcounter
 em_stop,Default Tagtable,Bool,false,false,false,I0.0,
 Reset Button,Default Tagtable,Bool,false,false,false,I0.1,
 Homing sensor,Default Tagtable,Bool,false,false,false,I0.2,
-Gate Closed,Default Tagtable,Bool,false,false,false,I0.3,slagboom is open?
-Gate Open,Default Tagtable,Bool,false,false,false,I0.4,slagboom is gesloten?
 LightSwitch Front,Default Tagtable,Bool,false,false,false,I1.0,
 LightSwitch Middle,Default Tagtable,Bool,false,false,false,I1.1,
 Start Button,Default Tagtable,Bool,false,false,false,I1.2,
