@@ -2,7 +2,7 @@ RETURN Void;
 
 CASE %PC_MAIN% OF
 REGION "Error"
--1:    //error state: do nothing
+%STEP_ERROR%:    //error state: do nothing
 ;
 END_REGION
 REGION "INIT"
@@ -16,8 +16,7 @@ END_REGION
 REGION MAINLOOP
     %STEP_DETECT_BOAT%:
         IF "BOAT_ARRIVED_LEFT" OR "BOAT_ARRIVED_RIGHT" THEN 
-            // boat on the left side of the bridge
-            %PC_MAIN% := 40;
+            %PC_MAIN% := %STEP_AFTER_BOAT_DETECT%;
         END_IF;
         ;
     40:
