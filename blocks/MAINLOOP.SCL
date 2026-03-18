@@ -3,20 +3,33 @@ RETURN Void;
 CASE %PC_MAIN% OF
 REGION "Error"
 %STEP_ERROR%:    //error state: do nothing
+// PASS (* locks the main counter *)
 ;
 END_REGION
 REGION "INIT"
-    0:
+    %STEP_INIT%:
+        IF "coroutine_autohome"() THEN
+            %PC_MAIN% := %STEP_INIT_10%;
+        END_IF;
     ;
-    10:
+    %STEP_INIT_10%:
+        "IEC_TIMER_DB_0".TON(
+            #IN := TRUE,
+            #T := T#10s
+        )
+        IF "IEC_TIMER_DB_0".Q THEN
+            "IEC_TIMER_DB_0".IN := FALSE;
+            %PC_MAIN% := %STEP_INIT_20%;
+        END_IF;
     ;
-    20:
+    %STEP_INIT_20%:
     ;
 END_REGION
 REGION MAINLOOP
-    %STEP_DETECT_BOAT%:
+    30:
+    %STEP_MAINLOOP%:
         IF "BOAT_ARRIVED_LEFT" OR "BOAT_ARRIVED_RIGHT" THEN 
-            %PC_MAIN% := %STEP_AFTER_BOAT_DETECT%;
+            %PC_MAIN% := %STEP_BOAT_DETECTED%;
         END_IF;
         ;
     40:
