@@ -1,3 +1,4 @@
+temp : temp Word;
 RETURN Void;
 
 CASE %PC_MAIN% OF
@@ -7,43 +8,81 @@ REGION "Error"
 ;
 END_REGION
 REGION "INIT"
-    %STEP_INIT%:
-        IF "coroutine_autohome"() THEN
-            %PC_MAIN% := %STEP_INIT_10%;
+    %STEP_INIT%:    //init state
+        // check if autohome is needed
+        #temp := "boot state"();
+        IF #temp == %BOOT_NO_HOME% THEN
+            %PC_MAIN% := %STEP_MAINLOOP%; //no homing needed: jump to mainloop
+        ELSE;
+            %PC_MAIN% := 10; //homing needed  
         END_IF;
-    ;
-    %STEP_INIT_10%:
-        "IEC_TIMER_DB_0".TON(
-            #IN := TRUE,
-            #T := T#10s
-        )
-        IF "IEC_TIMER_DB_0".Q THEN
-            "IEC_TIMER_DB_0".IN := FALSE;
-            %PC_MAIN% := %STEP_INIT_20%;
+    10:
+        #temp := "popup"(%POPUP_AUTOHOME%)
+        IF #temp != 0 THEN // 0 means no result yet
+            IF #temp == 1 THEN // 1 means OK button pressed
+                %PC_MAIN% := 30;
+            END_IF;
+            IF #temp == 2 THEN // 2 means Cancel button pressed
+                %PC_MAIN% := 20;
+            END_IF;
         END_IF;
-    ;
-    %STEP_INIT_20%:
-    ;
+        ;
+    20:
+        IF "warn"(%WARN_AUTOHOME_NEEDED%) THEN
+            %PC_MAIN% := 10;
+        END_IF;
+       ;
+    30: // start homing
+        IF "AutoHome"() THEN
+            %PC_MAIN% := %STEP_MAINLOOP%; // and jump to mainloop when done
+        END_IF;
+        ;
+
 END_REGION
 REGION MAINLOOP
-    30:
     %STEP_MAINLOOP%:
-        IF "BOAT_ARRIVED_LEFT" OR "BOAT_ARRIVED_RIGHT" THEN 
-            %PC_MAIN% := %STEP_BOAT_DETECTED%;
+        IF %BOAT_ARRIVED_LEFT% OR %BOAT_ARRIVED_RIGHT% THEN 
+            #temp = %BOAT_ARRIVED_LEFT%;
+            %PC_MAIN% := 50;
         END_IF;
         ;
-    40:
-        ;
     50:
+        "log"(%L_BOAT_DETECTED%);
+        IF "open bridge"() THEN
+            "log"(%L_BRUG_OPENED%);
+            %OPENCOUNTER% += 1;
+            %PC_MAIN% := 60;
+        END_IF;
         ;
-    60:
+    60: 
+        IF "boat passed"(#temp) THEN
+            "log"(%L_BOAT_PASSED%);
+            %PC_MAIN% := 70;
+        END_IF;
         ;
     70:
+        IF %OPENCOUNTER% > 10 THEN
+            #temp := "close bridge homing"();
+        ELSE;
+            #temp := "close bridge"()
+        END_IF;
+        IF #temp THEN
+            "log"(%L_BRUG_CLOSED%);
+            %PC_MAIN% := 80;
+        END_IF;
         ;
     80:
         ;
     90:
-		%PC_MAIN% := 30;
+        ;
+    100:
+		%PC_MAIN% := %STEP_MAINLOOP;
         ;
 END_REGION
 END_CASE;
+
+REGION threads
+    IF "MANUAL_OVERRIDE" THEN
+        "throw"(%ERROR_SOLVABLE%);
+    END_IF;
+END_REGION

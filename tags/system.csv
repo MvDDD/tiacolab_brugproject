@@ -1,3 +1,6 @@
 ,,| ------- rik -----,----------------|,| --------mark --,-----------------|
 specialname,tagname," type",address,type,address,comment
-%E_CODE%,"""errorstatus""","Word","MW1000","Word",MW1000,error statuscode
+%E_CODE%,"""errorstatus""",Word,MW1004,Word,MW1004,error statuscode
+%HMI_POPUP_TYPE%,"""Hmi popup""",Word,MW1008,Word,MW1008,hmi popup trigger
+%HMI_POPUP_RETURN%,"""Hmi popup result""",Word,MW10012,Word,MW10012,hmi popup returnvalue
+%E_SOLVABLE%,"""HMI can solve error""",Bool,MB1000.0,Bool,MB1000.0,hmi can solve errir

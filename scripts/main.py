@@ -124,10 +124,12 @@ def generate_tia_function_blocks(replacementTable):
 
     if replacementTable is None:
         replacementTable = {}
-
     createdBlocks = set()
     for root, dirs, files in os.walk(input_dir):
         for item in files:
+            localreplacementTable = {k: v for k, v in replacementTable.items()}
+            localreplacementTable["%%FILE%%"] = Replacement("%%FILE%%", os.path.splitext(item)[0])
+            localreplacementTable["%RETURN"] = Replacement("%RETURN", "#\""+ os.path.splitext(item)[0] + "\" :=")
             file_name = os.path.splitext(item)[0]
             file_path = os.path.join(root, item)
             with open(file_path, "r", encoding="utf-8") as f:
@@ -150,34 +152,33 @@ def generate_tia_function_blocks(replacementTable):
             body_lines = lines[return_index + 1:]
 
             # Apply replacements safely
+            # Apply replacements safely (works for %RETURN and all tokens)
             for i, line in enumerate(body_lines):
                 original_line = line
                 modified_line = line
-                replaced = False
 
-                for rep in replacementTable.values():
-                    if not rep.name or rep.name not in modified_line:
+                # Replace all tokens in the local replacement table
+                for rep in localreplacementTable.values():
+                    if not rep.name:
                         continue
+                    if rep.name in modified_line:
+                        # Replace all occurrences
+                        modified_line = modified_line.replace(rep.name, rep.replacement)
 
-                    col = 0
-                    while True:
-                        col = modified_line.find(rep.name, col)
-                        if col == -1:
-                            break
+                        # Track all occurrences for logging
+                        idx = 0
+                        while True:
+                            idx = line.find(rep.name, idx)
+                            if idx == -1:
+                                break
+                            rep.addresses.append(
+                                f"{rep.replacement} -> {rep.name} at {root}/{item} line {i + return_index + 2} col {idx+1}"
+                            )
+                            idx += len(rep.name)
 
-                        rep.addresses.append(
-                            f"{rep.replacement} -> {rep.name} at {root}/{item} line {i + return_index + 2} col {col+1}"
-                        )
-
-                        col += len(rep.name)
-
-                    new_line = modified_line.replace(rep.name, rep.replacement)
-                    if new_line != modified_line:
-                        modified_line = new_line
-                        replaced = True
-
-                    if replaced:
-                        body_lines[i] = f"// {original_line}\n{modified_line}"
+                # Comment original line if anything changed
+                if modified_line != original_line:
+                    body_lines[i] = f"// {original_line}\n{modified_line}"
 
             # Prepare output
             rel_dir = os.path.relpath(root, input_dir)
@@ -196,7 +197,6 @@ def generate_tia_function_blocks(replacementTable):
                 name, type = line.split(";")[0].split(":")
                 comment = line.split(";")[1]
                 if " " in type.strip():
-                    print(type.strip().split())
                     specifier, type = type.strip().split()
                     vars[specifier].append(f"{name} : {type};{" "+comment.strip() if comment.strip() else ""}")
             return_parts = header_lines[-1].strip().rstrip(";").split()
@@ -211,25 +211,29 @@ def generate_tia_function_blocks(replacementTable):
                 # f.write("{ S7_Optimized_Access := 'TRUE' }\n")
                 f.write("VERSION : 0.1\n")
 
-                f.write("VAR_INPUT\n")
-                for line in vars["input"]:
-                    f.write(f"    {line}\n")
-                f.write("END_VAR\n")
+                if len(vars["input"]):
+                    f.write("VAR_INPUT\n")
+                    for line in vars["input"]:
+                        f.write(f"    {line}\n")
+                    f.write("END_VAR\n")
 
-                f.write("VAR_OUTPUT")
-                for line in vars["output"]:
-                    f.write(f"    {line}")
-                f.write("END_VAR\n")
+                if len(vars["output"]):
+                    f.write("VAR_OUTPUT\n")
+                    for line in vars["output"]:
+                        f.write(f"    {line}")
+                    f.write("END_VAR\n")
 
-                f.write("VAR_INOUT")
-                for line in vars["inout"]:
-                    f.write(f"    {line}")
-                f.write("END_VAR\n")
+                if len(vars["inout"]):
+                    f.write("VAR_INOUT\n")
+                    for line in vars["inout"]:
+                        f.write(f"    {line}")
+                    f.write("END_VAR\n")
 
-                f.write("VAR_TEMP")
-                for line in vars["temp"]:
-                    f.write(f"    {line}")
-                f.write("END_VAR\n")
+                if len(vars["temp"]):
+                    f.write("VAR_TEMP\n")
+                    for line in vars["temp"]:
+                        f.write(f"    {line}")
+                    f.write("END_VAR\n")
 
                 f.write("BEGIN\n")
                 f.write("\n".join(body_lines).replace('"""', '"'))
@@ -305,7 +309,7 @@ def main():
             replacementTable[tag.specialname] = Replacement(tag.specialname, tag.tagname)
 
     # Generate blocks
-    createdBlocks = generate_tia_function_blocks(replacementTable)
+    generate_tia_function_blocks(replacementTable)
 
     # Write patches CSV
     with open("output/patches.csv", "w", encoding="utf-8", newline='') as f:
@@ -323,6 +327,9 @@ def main():
     with open(os.path.join("output", "tags", "tagtable.xml"), "w", encoding="utf-8") as f:
         f.write(generate_tagtable_xml(tags))
 
+    if "d" in sys.argv:
+        print("Skipping TIA Portal")
+        return
     # Attach TIA Portal
     try:
         portal = tia.attach_portal()

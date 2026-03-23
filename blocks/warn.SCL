@@ -1,0 +1,16 @@
+warncode : input Word;
+RETURN : Bool;
+
+//takes: warningcode
+//blocks until: hmi button pressed
+//returns: nothing
+
+%RETURN FALSE;
+
+%HMI_POPUP_TYPE% := #warncode;
+// hmi popup warncode turns 1 when OK button pressed
+if %HMI_POPUP_RETURN% != 0 THEN
+	%HMI_POPUP_TYPE% := 0;
+	%HMI_POPUP_RETURN% := 0;
+	%RETURN TRUE;
+END_IF;

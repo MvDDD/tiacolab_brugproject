@@ -1,4 +1,7 @@
-errorstatus,Default Tagtable,Word,false,false,false,MW1000,error statuscode
+errorstatus,Default Tagtable,Word,false,false,false,MW1004,error statuscode
+Hmi popup,Default Tagtable,Word,false,false,false,MW1008,hmi popup trigger
+Hmi popup result,Default Tagtable,Word,false,false,false,MW10012,hmi popup returnvalue
+HMI can solve error,Default Tagtable,Bool,false,false,false,MB1000.0,hmi can solve errir
 ProgramCounter,Default Tagtable,Word,false,false,false,MW200,main program counter
 ErrorCounter,Default Tagtable,Word,false,false,false,MW204,error stepcounter
 em_stop,Default Tagtable,Bool,false,false,false,I0.0,
@@ -16,3 +19,4 @@ Noodstop Rood,Default Tagtable,Bool,false,false,false,Q0.4,
 Noodstop Groen,Default Tagtable,Bool,false,false,false,Q0.5,
 Boat Arrived Left,Default Tagtable,Bool,false,false,false,MB100.0,
 Boat Arrived Right,Default Tagtable,Bool,false,false,false,MB100.1,
+ProgramCounterTrace,Default Tagtable,Bool,false,false,false,MW108,

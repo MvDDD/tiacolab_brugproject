@@ -4,21 +4,22 @@ aborted : temp Bool;
 T_error : temp Bool;
 T_error_id : temp Word;
 T_error_info : temp Word;
-
 RETURN BOOL;
 
-"Autohome" := 0; // default: return 0
+#"Autohome" := 0; // default: return 0
 
-"MC_Home_DB"(Axis:="BrugAansturing_axis",
-	Position:=0,
-	Mode:=3,
-	Done=>#done,
-	Busy=>#busy,
-	CommandAborted=>#aborted,
-	Error=>#T_error,
-	ErrorID=>#T_error_id,
-	ErrorInfo=>#T_error_info,
+"MC_Home_DB"(Axis:=%AXIS%,
+	#Position:=%start_position%,
+	#Mode:=%MODE_AUTOHOME%,
+	#Done=>#done,
+	#CommandAborted=>#aborted,
+	#Error=>#T_error,
+	#ErrorID=>#T_error_id,
+	#ErrorInfo=>#T_error_info,
 );
 
-"Autohome" := #done or not #busy; // return 1 if done (or error)
-
+IF (#Error != 0) THEN
+	"throw"(%E_SERVO%);
+ELSE;	
+	#"Autohome" := #done ; // return 1 if done (or error)
+END_IF;

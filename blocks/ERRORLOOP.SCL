@@ -1,11 +1,20 @@
-RETURN Void;
+e_solvable : temp Bool;
+RETURN : Void;
 
-CASE %E_CODE% of
-	%E_OK%: // no error: pass
-	;
-	%E_SERVO%:
-		"HMI_ERROR_ADDMESAGE"(%E_SERVO%);
-	;
-	else:
+
+
+CASE %PC_ERR% OF:
+	0:
+		if %E_CODE% != %E_OK% then
+			#e_solvable := (%E_CODE% / 1000) < 2;
+			CASE %E_CODE% of
+
+			END_CASE;
+		END_IF;
+	10:
+		%PC_ERR% := 0;
+		;
+	ELSE:
+		%PC_ERR% := 0;
 	;
 END_CASE;

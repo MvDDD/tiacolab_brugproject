@@ -6,9 +6,11 @@ if #Initial_Call then
 	%PC_MAIN% := 0;
 	%PC_ERR% := 0;
 	%E_CODE% := %E_OK% (* no error on boot *);
+	%HMI_POPUP_WARN% := 0;
+	%HMI_POPUP_RETURNVALUE% := 0;
 END_IF;
 
 REGION threads
-	MAINLOOP();
-	ERRORLOOP();
+	"MAINLOOP"();
+	"ERRORLOOP"();
 END_REGION
