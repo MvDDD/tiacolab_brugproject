@@ -1,0 +1,34 @@
+RETURN : Bool;
+
+CASE "SubProgramCounter" OF
+    0: // boat traffic light sequence
+        
+        ;
+    10:
+        "MC_MoveAbsolute_DB"(Axis:="BrugAansturing_axis",
+                             Execute:=TRUE,
+                             Position:=0,
+                             Velocity:="Servo_Velocity"
+                             (*Direction:=_int_in_,
+                             Done=>_bool_out_,
+                             Busy=>_bool_out_,
+                             CommandAborted=>_bool_out_,
+                             Error=>_bool_out_,
+                             ErrorID=>_word_out_,
+                             ErrorInfo=>_word_out*));
+                             IF "BrugAansturing_axis".StatusBits.Done THEN
+                                 "SubProgramCounter" := 20;
+                             END_IF
+        ;
+    20:
+    "IEC_Timer_0_DB".TON(IN := TRUE,
+                         PT := T#1s,
+                         Q => #Q);
+        IF #Q = TRUE THEN
+            RESET_TIMER("IEC_Timer_0_DB");
+            "Road_Green" := TRUE;
+            "Road_Red" := FALSE;
+            "Open Gate" := TRUE;
+            "SubProgramCounter" := 0;
+        END_IF;
+END_CASE;

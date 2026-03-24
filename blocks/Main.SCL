@@ -3,7 +3,7 @@ Remanence : input Bool;   // =True, if remanent data are available
 RETURN Void;
 
 if #Initial_Call then
-	%PC_MAIN% := 0;
+	%PC_MAIN% := %STEP_INIT%;
 	%PC_ERR% := 0;
 	%E_CODE% := %E_OK% (* no error on boot *);
 	%HMI_POPUP_WARN% := 0;

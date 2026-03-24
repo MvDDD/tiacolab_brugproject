@@ -1,102 +1,27 @@
 %E_OK%,%E_OK%
-,,0 -> %E_OK% at blocks/ERRORLOOP.SCL line 6 col 18
+,,0 -> %E_OK% at blocks/ERRORLOOP.SCL line 8 col 18
 ,,0 -> %E_OK% at blocks/Main.SCL line 8 col 14
-%E_ERR%,%E_ERR%,No patches
-%E_SERVO_SOLVABLE%,%E_SERVO_SOLVABLE%
-,,10 -> %E_SERVO_SOLVABLE% at blocks/ERRORLOOP.SCL line 12 col 32
-,,10 -> %E_SERVO_SOLVABLE% at blocks/MOTOR_ERRNO.SCL line 18 col 30
-,,10 -> %E_SERVO_SOLVABLE% at blocks/MOTOR_ERRNO.SCL line 19 col 30
-,,10 -> %E_SERVO_SOLVABLE% at blocks/MOTOR_ERRNO.SCL line 26 col 30
-,,10 -> %E_SERVO_SOLVABLE% at blocks/MOTOR_ERRNO.SCL line 27 col 30
-,,10 -> %E_SERVO_SOLVABLE% at blocks/MOTOR_ERRNO.SCL line 34 col 30
-,,10 -> %E_SERVO_SOLVABLE% at blocks/MOTOR_ERRNO.SCL line 40 col 30
-,,10 -> %E_SERVO_SOLVABLE% at blocks/MOTOR_ERRNO.SCL line 46 col 30
-,,10 -> %E_SERVO_SOLVABLE% at blocks/MOTOR_ERRNO.SCL line 52 col 30
-,,10 -> %E_SERVO_SOLVABLE% at blocks/MOTOR_ERRNO.SCL line 58 col 30
-,,10 -> %E_SERVO_SOLVABLE% at blocks/MOTOR_ERRNO.SCL line 59 col 30
-,,10 -> %E_SERVO_SOLVABLE% at blocks/MOTOR_ERRNO.SCL line 65 col 30
-,,10 -> %E_SERVO_SOLVABLE% at blocks/MOTOR_ERRNO.SCL line 66 col 30
-,,10 -> %E_SERVO_SOLVABLE% at blocks/MOTOR_ERRNO.SCL line 72 col 30
-,,10 -> %E_SERVO_SOLVABLE% at blocks/MOTOR_ERRNO.SCL line 78 col 30
-,,10 -> %E_SERVO_SOLVABLE% at blocks/MOTOR_ERRNO.SCL line 91 col 30
-,,10 -> %E_SERVO_SOLVABLE% at blocks/MOTOR_ERRNO.SCL line 92 col 30
-,,10 -> %E_SERVO_SOLVABLE% at blocks/MOTOR_ERRNO.SCL line 93 col 30
-,,10 -> %E_SERVO_SOLVABLE% at blocks/MOTOR_ERRNO.SCL line 99 col 30
-,,10 -> %E_SERVO_SOLVABLE% at blocks/MOTOR_ERRNO.SCL line 109 col 30
-,,10 -> %E_SERVO_SOLVABLE% at blocks/MOTOR_ERRNO.SCL line 115 col 30
-,,10 -> %E_SERVO_SOLVABLE% at blocks/MOTOR_ERRNO.SCL line 130 col 30
-,,10 -> %E_SERVO_SOLVABLE% at blocks/MOTOR_ERRNO.SCL line 137 col 30
-,,10 -> %E_SERVO_SOLVABLE% at blocks/MOTOR_ERRNO.SCL line 143 col 30
-,,10 -> %E_SERVO_SOLVABLE% at blocks/MOTOR_ERRNO.SCL line 149 col 30
-,,10 -> %E_SERVO_SOLVABLE% at blocks/MOTOR_ERRNO.SCL line 155 col 30
-,,10 -> %E_SERVO_SOLVABLE% at blocks/MOTOR_ERRNO.SCL line 161 col 30
-,,10 -> %E_SERVO_SOLVABLE% at blocks/MOTOR_ERRNO.SCL line 167 col 30
-%E_SERVO_UNSOLVABLE%,%E_SERVO_UNSOLVABLE%
-,,11 -> %E_SERVO_UNSOLVABLE% at blocks/MOTOR_ERRNO.SCL line 12 col 30
-,,11 -> %E_SERVO_UNSOLVABLE% at blocks/MOTOR_ERRNO.SCL line 20 col 30
-,,11 -> %E_SERVO_UNSOLVABLE% at blocks/MOTOR_ERRNO.SCL line 28 col 30
-,,11 -> %E_SERVO_UNSOLVABLE% at blocks/MOTOR_ERRNO.SCL line 79 col 30
-,,11 -> %E_SERVO_UNSOLVABLE% at blocks/MOTOR_ERRNO.SCL line 80 col 30
-,,11 -> %E_SERVO_UNSOLVABLE% at blocks/MOTOR_ERRNO.SCL line 81 col 30
-,,11 -> %E_SERVO_UNSOLVABLE% at blocks/MOTOR_ERRNO.SCL line 82 col 30
-,,11 -> %E_SERVO_UNSOLVABLE% at blocks/MOTOR_ERRNO.SCL line 83 col 30
-,,11 -> %E_SERVO_UNSOLVABLE% at blocks/MOTOR_ERRNO.SCL line 84 col 30
-,,11 -> %E_SERVO_UNSOLVABLE% at blocks/MOTOR_ERRNO.SCL line 85 col 30
-,,11 -> %E_SERVO_UNSOLVABLE% at blocks/MOTOR_ERRNO.SCL line 100 col 30
-,,11 -> %E_SERVO_UNSOLVABLE% at blocks/MOTOR_ERRNO.SCL line 101 col 30
-,,11 -> %E_SERVO_UNSOLVABLE% at blocks/MOTOR_ERRNO.SCL line 102 col 30
-,,11 -> %E_SERVO_UNSOLVABLE% at blocks/MOTOR_ERRNO.SCL line 103 col 30
-,,11 -> %E_SERVO_UNSOLVABLE% at blocks/MOTOR_ERRNO.SCL line 116 col 30
-,,11 -> %E_SERVO_UNSOLVABLE% at blocks/MOTOR_ERRNO.SCL line 117 col 30
-,,11 -> %E_SERVO_UNSOLVABLE% at blocks/MOTOR_ERRNO.SCL line 123 col 30
-,,11 -> %E_SERVO_UNSOLVABLE% at blocks/MOTOR_ERRNO.SCL line 124 col 30
-%E_SERVO_UNKNOWN%,%E_SERVO_UNKNOWN%
-,,12 -> %E_SERVO_UNKNOWN% at blocks/ERRORLOOP.SCL line 8 col 16
-,,12 -> %E_SERVO_UNKNOWN% at blocks/MOTOR_ERRNO.SCL line 13 col 23
-,,12 -> %E_SERVO_UNKNOWN% at blocks/MOTOR_ERRNO.SCL line 21 col 23
-,,12 -> %E_SERVO_UNKNOWN% at blocks/MOTOR_ERRNO.SCL line 29 col 23
-,,12 -> %E_SERVO_UNKNOWN% at blocks/MOTOR_ERRNO.SCL line 35 col 23
-,,12 -> %E_SERVO_UNKNOWN% at blocks/MOTOR_ERRNO.SCL line 41 col 23
-,,12 -> %E_SERVO_UNKNOWN% at blocks/MOTOR_ERRNO.SCL line 47 col 23
-,,12 -> %E_SERVO_UNKNOWN% at blocks/MOTOR_ERRNO.SCL line 53 col 23
-,,12 -> %E_SERVO_UNKNOWN% at blocks/MOTOR_ERRNO.SCL line 60 col 23
-,,12 -> %E_SERVO_UNKNOWN% at blocks/MOTOR_ERRNO.SCL line 67 col 23
-,,12 -> %E_SERVO_UNKNOWN% at blocks/MOTOR_ERRNO.SCL line 73 col 23
-,,12 -> %E_SERVO_UNKNOWN% at blocks/MOTOR_ERRNO.SCL line 86 col 23
-,,12 -> %E_SERVO_UNKNOWN% at blocks/MOTOR_ERRNO.SCL line 94 col 23
-,,12 -> %E_SERVO_UNKNOWN% at blocks/MOTOR_ERRNO.SCL line 104 col 23
-,,12 -> %E_SERVO_UNKNOWN% at blocks/MOTOR_ERRNO.SCL line 110 col 23
-,,12 -> %E_SERVO_UNKNOWN% at blocks/MOTOR_ERRNO.SCL line 118 col 23
-,,12 -> %E_SERVO_UNKNOWN% at blocks/MOTOR_ERRNO.SCL line 125 col 23
-,,12 -> %E_SERVO_UNKNOWN% at blocks/MOTOR_ERRNO.SCL line 131 col 23
-,,12 -> %E_SERVO_UNKNOWN% at blocks/MOTOR_ERRNO.SCL line 138 col 23
-,,12 -> %E_SERVO_UNKNOWN% at blocks/MOTOR_ERRNO.SCL line 144 col 23
-,,12 -> %E_SERVO_UNKNOWN% at blocks/MOTOR_ERRNO.SCL line 150 col 23
-,,12 -> %E_SERVO_UNKNOWN% at blocks/MOTOR_ERRNO.SCL line 156 col 23
-,,12 -> %E_SERVO_UNKNOWN% at blocks/MOTOR_ERRNO.SCL line 162 col 23
-,,12 -> %E_SERVO_UNKNOWN% at blocks/MOTOR_ERRNO.SCL line 168 col 23
-,,12 -> %E_SERVO_UNKNOWN% at blocks/MOTOR_ERRNO.SCL line 173 col 15
-%W_AUTOHOME%,%W_AUTOHOME%
-,,20 -> %W_AUTOHOME% at blocks/MAINLOOP.SCL line 13 col 29
-%W_AUTOHOME_REQUIRED%,%W_AUTOHOME_REQUIRED%
-,,21 -> %W_AUTOHOME_REQUIRED% at blocks/MAINLOOP.SCL line 24 col 20
-%start_position%,%start_position%
-,,0 -> %start_position% at blocks/AutoHome.SCL line 12 col 13
+%E_SOLVABLE%,%E_SOLVABLE%
+,,"""HMI can solve error"" -> %E_SOLVABLE% at blocks/AutoHome.SCL line 20 col 66"
+%E_UNSOLVABLE%,%E_UNSOLVABLE%,No patches
+%E_SERVO%,%E_SERVO%
+,,16#100 -> %E_SERVO% at blocks/AutoHome.SCL line 20 col 10
 %end_position%,%end_position%,No patches
 %AXIS%,%AXIS%
-,,"""BrugAansturing_axis_Rik"" -> %AXIS% at blocks/AutoHome.SCL line 11 col 20"
-%MODE_AUTOHOME%,%MODE_AUTOHOME%
-,,3 -> %MODE_AUTOHOME% at blocks/AutoHome.SCL line 13 col 9
+,,BrugAansturing_axis_Rik -> %AXIS% at blocks/AutoHome.SCL line 8 col 1
+,,BrugAansturing_axis_Rik -> %AXIS% at blocks/AutoHome.SCL line 9 col 20
+,,BrugAansturing_axis_Rik -> %AXIS% at blocks/AutoHome.SCL line 23 col 3
 %STEP_INIT%,%STEP_INIT%
-,,0 -> %STEP_INIT% at blocks/MAINLOOP.SCL line 12 col 5
-,,0 -> %STEP_INIT% at blocks/MAINLOOP.SCL line 15 col 26
-,,0 -> %STEP_INIT% at blocks/MAINLOOP.SCL line 17 col 26
-,,0 -> %STEP_INIT% at blocks/MAINLOOP.SCL line 20 col 5
+,,0 -> %STEP_INIT% at blocks/Main.SCL line 6 col 15
+,,0 -> %STEP_INIT% at blocks/MAINLOOP.SCL line 11 col 5
 ,,No patches
 %STEP_MAINLOOP%,%STEP_MAINLOOP%
-,,40 -> %STEP_MAINLOOP% at blocks/MAINLOOP.SCL line 40 col 5
+,,40 -> %STEP_MAINLOOP% at blocks/MAINLOOP.SCL line 15 col 26
+,,40 -> %STEP_MAINLOOP% at blocks/MAINLOOP.SCL line 37 col 26
+,,40 -> %STEP_MAINLOOP% at blocks/MAINLOOP.SCL line 43 col 5
 %IS_MARK%,%IS_MARK%,No patches
 %IS_RIK%,%IS_RIK%,No patches
+%E_ERR%,%E_ERR%,No patches
 %HMI_POPUP_RETURN%,%HMI_POPUP_RETURN%
 ,,"""Hmi popup result"" -> %HMI_POPUP_RETURN% at blocks/warn.SCL line 12 col 4"
 ,,"""Hmi popup result"" -> %HMI_POPUP_RETURN% at blocks/warn.SCL line 14 col 2"
@@ -108,27 +33,31 @@
 %BARRIER_OPEN%,%BARRIER_OPEN%,No patches
 %ERR_PC_MAIN%,%ERR_PC_MAIN%
 ,,"""ProgramCounterTrace"" -> %ERR_PC_MAIN% at blocks/throw.SCL line 4 col 1"
-%E_SOLVABLE%,%E_SOLVABLE%,No patches
 %EM_STOP%,%EM_STOP%,No patches
 %PC_MAIN%,%PC_MAIN%
 ,,"""ProgramCounter"" -> %PC_MAIN% at blocks/Main.SCL line 6 col 2"
 ,,"""ProgramCounter"" -> %PC_MAIN% at blocks/MAINLOOP.SCL line 4 col 6"
 ,,"""ProgramCounter"" -> %PC_MAIN% at blocks/MAINLOOP.SCL line 15 col 13"
 ,,"""ProgramCounter"" -> %PC_MAIN% at blocks/MAINLOOP.SCL line 17 col 13"
-,,"""ProgramCounter"" -> %PC_MAIN% at blocks/MAINLOOP.SCL line 22 col 13"
-,,"""ProgramCounter"" -> %PC_MAIN% at blocks/MAINLOOP.SCL line 25 col 13"
-,,"""ProgramCounter"" -> %PC_MAIN% at blocks/MAINLOOP.SCL line 35 col 13"
-,,"""ProgramCounter"" -> %PC_MAIN% at blocks/MAINLOOP.SCL line 42 col 13"
-,,"""ProgramCounter"" -> %PC_MAIN% at blocks/MAINLOOP.SCL line 57 col 3"
+,,"""ProgramCounter"" -> %PC_MAIN% at blocks/MAINLOOP.SCL line 23 col 17"
+,,"""ProgramCounter"" -> %PC_MAIN% at blocks/MAINLOOP.SCL line 26 col 17"
+,,"""ProgramCounter"" -> %PC_MAIN% at blocks/MAINLOOP.SCL line 32 col 13"
+,,"""ProgramCounter"" -> %PC_MAIN% at blocks/MAINLOOP.SCL line 37 col 13"
+,,"""ProgramCounter"" -> %PC_MAIN% at blocks/MAINLOOP.SCL line 46 col 13"
+,,"""ProgramCounter"" -> %PC_MAIN% at blocks/MAINLOOP.SCL line 54 col 13"
+,,"""ProgramCounter"" -> %PC_MAIN% at blocks/MAINLOOP.SCL line 60 col 13"
+,,"""ProgramCounter"" -> %PC_MAIN% at blocks/MAINLOOP.SCL line 71 col 13"
+,,"""ProgramCounter"" -> %PC_MAIN% at blocks/MAINLOOP.SCL line 79 col 3"
 ,,"""ProgramCounter"" -> %PC_MAIN% at blocks/throw.SCL line 4 col 18"
 ,,"""ProgramCounter"" -> %PC_MAIN% at blocks/throw.SCL line 5 col 1"
 %PC_ERR%,%PC_ERR%
-,,"""ErrorCounter"" -> %PC_ERR% at blocks/ERRORLOOP.SCL line 4 col 6"
-,,"""ErrorCounter"" -> %PC_ERR% at blocks/ERRORLOOP.SCL line 23 col 3"
+,,"""ErrorCounter"" -> %PC_ERR% at blocks/ERRORLOOP.SCL line 6 col 6"
+,,"""ErrorCounter"" -> %PC_ERR% at blocks/ERRORLOOP.SCL line 15 col 3"
+,,"""ErrorCounter"" -> %PC_ERR% at blocks/ERRORLOOP.SCL line 18 col 3"
 ,,"""ErrorCounter"" -> %PC_ERR% at blocks/Main.SCL line 7 col 2"
 %E_CODE%,%E_CODE%
-,,"""errorstatus"" -> %E_CODE% at blocks/ERRORLOOP.SCL line 6 col 6"
-,,"""errorstatus"" -> %E_CODE% at blocks/ERRORLOOP.SCL line 7 col 9"
-,,"""errorstatus"" -> %E_CODE% at blocks/ERRORLOOP.SCL line 12 col 20"
+,,"""errorstatus"" -> %E_CODE% at blocks/ERRORLOOP.SCL line 8 col 6"
+,,"""errorstatus"" -> %E_CODE% at blocks/ERRORLOOP.SCL line 9 col 20"
+,,"""errorstatus"" -> %E_CODE% at blocks/ERRORLOOP.SCL line 10 col 9"
 ,,"""errorstatus"" -> %E_CODE% at blocks/Main.SCL line 8 col 2"
 ,,"""errorstatus"" -> %E_CODE% at blocks/throw.SCL line 6 col 1"

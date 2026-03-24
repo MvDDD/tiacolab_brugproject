@@ -1,6 +1,4 @@
 NAME," REPLACEMENT"
 ," mark"," rik"
-%start_position%," 0",0
 %end_position%," 1000",10
-%AXIS%,"""BrugAansturing_axis_Mark""","""BrugAansturing_axis_Rik"""
-%MODE_AUTOHOME%,3,3
+%AXIS%,BrugAansturing_axis_Mark,BrugAansturing_axis_Rik

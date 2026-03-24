@@ -1,5 +1,3 @@
-done : temp Bool;
-busy : temp Bool;
 aborted : temp Bool;
 T_error : temp Bool;
 T_error_id : temp Word;
@@ -7,11 +5,11 @@ T_error_info : temp Word;
 RETURN BOOL;
 
 #"Autohome" := 0; // default: return 0
-
+%AXIS%.PositionLimits_HW.Active := FALSE;
 "MC_Home_DB"(Axis:=%AXIS%,
-	#Position:=%start_position%,
-	#Mode:=%MODE_AUTOHOME%,
-	#Done=>#done,
+	#Execute := "AutoHome",
+	#Position:= 0,
+	#Mode:=3,
 	#CommandAborted=>#aborted,
 	#Error=>#T_error,
 	#ErrorID=>#T_error_id,
@@ -19,7 +17,10 @@ RETURN BOOL;
 );
 
 IF (#Error != 0) THEN
-	"throw"(%E_SERVO%);
-ELSE;	
-	#"Autohome" := #done ; // return 1 if done (or error)
+	"throw"(%E_SERVO% + "MOTOR_ERRNO"(#T_error_id, #T_error_info) + %E_SOLVABLE%);
+ELSE;
+	IF "MC_Home_DB".Done THEN
+		%AXIS%.PositionLimits_HW.Active := TRUE;
+		#"Autohome" := 1;
+	END_IF;
 END_IF;
