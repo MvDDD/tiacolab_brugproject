@@ -1,4 +1,4 @@
-RETURN : Bool;
+RETURN Bool;
 
 CASE "SubProgramCounter" OF
     0: // boat traffic light sequence

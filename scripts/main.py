@@ -220,19 +220,19 @@ def generate_tia_function_blocks(replacementTable):
                 if len(vars["output"]):
                     f.write("VAR_OUTPUT\n")
                     for line in vars["output"]:
-                        f.write(f"    {line}")
+                        f.write(f"    {line}\n")
                     f.write("END_VAR\n")
 
                 if len(vars["inout"]):
                     f.write("VAR_INOUT\n")
                     for line in vars["inout"]:
-                        f.write(f"    {line}")
+                        f.write(f"    {line}\n")
                     f.write("END_VAR\n")
 
                 if len(vars["temp"]):
                     f.write("VAR_TEMP\n")
                     for line in vars["temp"]:
-                        f.write(f"    {line}")
+                        f.write(f"    {line}\n")
                     f.write("END_VAR\n")
 
                 f.write("BEGIN\n")

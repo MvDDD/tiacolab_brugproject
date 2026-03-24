@@ -2,7 +2,7 @@
 ,,0 -> %E_OK% at blocks/ERRORLOOP.SCL line 8 col 18
 ,,0 -> %E_OK% at blocks/Main.SCL line 8 col 14
 %E_SOLVABLE%,%E_SOLVABLE%
-,,"""HMI can solve error"" -> %E_SOLVABLE% at blocks/AutoHome.SCL line 20 col 66"
+,,16#1000 -> %E_SOLVABLE% at blocks/AutoHome.SCL line 20 col 66
 %E_UNSOLVABLE%,%E_UNSOLVABLE%,No patches
 %E_SERVO%,%E_SERVO%
 ,,16#100 -> %E_SERVO% at blocks/AutoHome.SCL line 20 col 10
@@ -22,42 +22,17 @@
 %IS_MARK%,%IS_MARK%,No patches
 %IS_RIK%,%IS_RIK%,No patches
 %E_ERR%,%E_ERR%,No patches
-%HMI_POPUP_RETURN%,%HMI_POPUP_RETURN%
-,,"""Hmi popup result"" -> %HMI_POPUP_RETURN% at blocks/warn.SCL line 12 col 4"
-,,"""Hmi popup result"" -> %HMI_POPUP_RETURN% at blocks/warn.SCL line 14 col 2"
-%BOAT_NEW_RIGHT%,%BOAT_NEW_RIGHT%,No patches
-%HMI_POPUP_TYPE%,%HMI_POPUP_TYPE%
-,,"""Hmi popup"" -> %HMI_POPUP_TYPE% at blocks/warn.SCL line 10 col 1"
-,,"""Hmi popup"" -> %HMI_POPUP_TYPE% at blocks/warn.SCL line 13 col 2"
-%BOAT_NEW_LEFT%,%BOAT_NEW_LEFT%,No patches
+%SCREEN_NUMBER%,%SCREEN_NUMBER%,No patches
 %BARRIER_OPEN%,%BARRIER_OPEN%,No patches
-%ERR_PC_MAIN%,%ERR_PC_MAIN%
-,,"""ProgramCounterTrace"" -> %ERR_PC_MAIN% at blocks/throw.SCL line 4 col 1"
+%E_TEMP_PC0%,%E_TEMP_PC0%,No patches
+%HMI_RESULT%,%HMI_RESULT%,No patches
+%HMI_POPUP%,%HMI_POPUP%,No patches
 %EM_STOP%,%EM_STOP%,No patches
-%PC_MAIN%,%PC_MAIN%
-,,"""ProgramCounter"" -> %PC_MAIN% at blocks/Main.SCL line 6 col 2"
-,,"""ProgramCounter"" -> %PC_MAIN% at blocks/MAINLOOP.SCL line 4 col 6"
-,,"""ProgramCounter"" -> %PC_MAIN% at blocks/MAINLOOP.SCL line 15 col 13"
-,,"""ProgramCounter"" -> %PC_MAIN% at blocks/MAINLOOP.SCL line 17 col 13"
-,,"""ProgramCounter"" -> %PC_MAIN% at blocks/MAINLOOP.SCL line 23 col 17"
-,,"""ProgramCounter"" -> %PC_MAIN% at blocks/MAINLOOP.SCL line 26 col 17"
-,,"""ProgramCounter"" -> %PC_MAIN% at blocks/MAINLOOP.SCL line 32 col 13"
-,,"""ProgramCounter"" -> %PC_MAIN% at blocks/MAINLOOP.SCL line 37 col 13"
-,,"""ProgramCounter"" -> %PC_MAIN% at blocks/MAINLOOP.SCL line 46 col 13"
-,,"""ProgramCounter"" -> %PC_MAIN% at blocks/MAINLOOP.SCL line 54 col 13"
-,,"""ProgramCounter"" -> %PC_MAIN% at blocks/MAINLOOP.SCL line 60 col 13"
-,,"""ProgramCounter"" -> %PC_MAIN% at blocks/MAINLOOP.SCL line 71 col 13"
-,,"""ProgramCounter"" -> %PC_MAIN% at blocks/MAINLOOP.SCL line 79 col 3"
-,,"""ProgramCounter"" -> %PC_MAIN% at blocks/throw.SCL line 4 col 18"
-,,"""ProgramCounter"" -> %PC_MAIN% at blocks/throw.SCL line 5 col 1"
-%PC_ERR%,%PC_ERR%
-,,"""ErrorCounter"" -> %PC_ERR% at blocks/ERRORLOOP.SCL line 6 col 6"
-,,"""ErrorCounter"" -> %PC_ERR% at blocks/ERRORLOOP.SCL line 15 col 3"
-,,"""ErrorCounter"" -> %PC_ERR% at blocks/ERRORLOOP.SCL line 18 col 3"
-,,"""ErrorCounter"" -> %PC_ERR% at blocks/Main.SCL line 7 col 2"
 %E_CODE%,%E_CODE%
 ,,"""errorstatus"" -> %E_CODE% at blocks/ERRORLOOP.SCL line 8 col 6"
 ,,"""errorstatus"" -> %E_CODE% at blocks/ERRORLOOP.SCL line 9 col 20"
 ,,"""errorstatus"" -> %E_CODE% at blocks/ERRORLOOP.SCL line 10 col 9"
 ,,"""errorstatus"" -> %E_CODE% at blocks/Main.SCL line 8 col 2"
 ,,"""errorstatus"" -> %E_CODE% at blocks/throw.SCL line 6 col 1"
+%PC1%,%PC1%,No patches
+%PC0%,%PC0%,No patches

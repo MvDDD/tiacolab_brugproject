@@ -1,22 +1,20 @@
+HMI_screen_number,Default Tagtable,Word,false,false,false,MW1100,
+HMI_popup,Default Tagtable,Word,false,false,false,MW1102,
+HMI_result,Default Tagtable,Word,false,false,false,MW1104,
 errorstatus,Default Tagtable,Word,false,false,false,MW1004,error statuscode
-Hmi popup,Default Tagtable,Word,false,false,false,MW1008,hmi popup trigger
-Hmi popup result,Default Tagtable,Word,false,false,false,MW10012,hmi popup returnvalue
-HMI can solve error,Default Tagtable,Bool,false,false,false,MB1000.0,hmi can solve errir
-ProgramCounter,Default Tagtable,Word,false,false,false,MW200,main program counter
-ErrorCounter,Default Tagtable,Word,false,false,false,MW204,error stepcounter
+ProgramCounter,Default Tagtable,Word,false,false,false,MW1008,programcounter
+SubProgramCounter,Default Tagtable,Word,false,false,false,MW1012,hmi popup returnvalue
+ErrorTempCounter,Default Tagtable,Word,false,false,false,MW1016,error state save
 em_stop,Default Tagtable,Bool,false,false,false,I0.0,
 Reset Button,Default Tagtable,Bool,false,false,false,I0.1,
-Homing sensor,Default Tagtable,Bool,false,false,false,I0.2,
-LightSwitch Front,Default Tagtable,Bool,false,false,false,I1.0,
-LightSwitch Middle,Default Tagtable,Bool,false,false,false,I1.1,
-Start Button,Default Tagtable,Bool,false,false,false,I1.2,
-Stop Button,Default Tagtable,Bool,false,false,false,I1.3,
+LightSwitch Left,Default Tagtable,Bool,false,false,false,I0.5,switch for boat left
+LightSwitch Middle,Default Tagtable,Bool,false,false,false,I0.6,switch for boat middle
+LightSwitch Right,Default Tagtable,Bool,false,false,false,I0.7,switch for boat right
 Open Gate,Default Tagtable,Bool,false,false,false,Q0.0,openen van de slagboom
 Road_Yellow,Default Tagtable,Bool,false,false,false,Q0.1,
 Road_Green,Default Tagtable,Bool,false,false,false,Q0.2,
 Road_Red,Default Tagtable,Bool,false,false,false,Q0.3,
-Noodstop Rood,Default Tagtable,Bool,false,false,false,Q0.4,
-Noodstop Groen,Default Tagtable,Bool,false,false,false,Q0.5,
-Boat Arrived Left,Default Tagtable,Bool,false,false,false,MB100.0,
-Boat Arrived Right,Default Tagtable,Bool,false,false,false,MB100.1,
-ProgramCounterTrace,Default Tagtable,Bool,false,false,false,MW108,
+homing sensor,Default Tagtable,Bool,false,false,false,I1.5,
+Water_Red_Top,Default Tagtable,Bool,false,false,false,Q0.4,
+Water_Red_Bottom,Default Tagtable,Bool,false,false,false,Q0.5,
+Water_Green,Default Tagtable,Bool,false,false,false,Q0.6,

@@ -1,8 +1,8 @@
 ,,| ------- rik -----,----------------|,| --------mark --,-----------------|,
 specialname,tagname, type,address,type,address,comment
-%START%,"""HMI Start""",Bool,,,,
-%HMI_MAN_OVERR%,"""HMI Manual Override""",Bool,,,,
-,"""HMI Debug Screen""",Bool,,,,
+%SCREEN_NUMBER%,"""HMI_screen_number""",Word,MW1100,Word,MW1100,
+%HMI_POPUP%,"""HMI_popup""",Word,MW1102,Word,MW1102,
+%HMI_RESULT%,"""HMI_result""",Word,MW1104,Word,MW1104,
 ,,,,,,
 ,,,,,,
 ,,,,,,

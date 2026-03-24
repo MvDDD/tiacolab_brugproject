@@ -1,5 +1,5 @@
 e_solvable : temp Bool;
-RETURN : Void;
+RETURN Void;
 
 
 
