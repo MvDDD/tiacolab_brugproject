@@ -7,14 +7,15 @@ SubProgramCounter,Default Tagtable,Word,false,false,false,MW1012,hmi popup retur
 ErrorTempCounter,Default Tagtable,Word,false,false,false,MW1016,error state save
 em_stop,Default Tagtable,Bool,false,false,false,I0.0,
 Reset Button,Default Tagtable,Bool,false,false,false,I0.1,
-LightSwitch Left,Default Tagtable,Bool,false,false,false,I0.5,switch for boat left
-LightSwitch Middle,Default Tagtable,Bool,false,false,false,I0.6,switch for boat middle
-LightSwitch Right,Default Tagtable,Bool,false,false,false,I0.7,switch for boat right
+Gate Closed,Default Tagtable,Bool,false,false,false,I0.2,slagboom is open?
+LightSwitch Left,Default Tagtable,Bool,false,false,false,I0.3,switch for boat left
+LightSwitch Middle,Default Tagtable,Bool,false,false,false,I0.4,switch for boat middle
+LightSwitch Right,Default Tagtable,Bool,false,false,false,I0.5,switch for boat right
+homing sensor,Default Tagtable,Bool,false,false,false,I0.6,
 Open Gate,Default Tagtable,Bool,false,false,false,Q0.0,openen van de slagboom
 Road_Yellow,Default Tagtable,Bool,false,false,false,Q0.1,
 Road_Green,Default Tagtable,Bool,false,false,false,Q0.2,
 Road_Red,Default Tagtable,Bool,false,false,false,Q0.3,
-homing sensor,Default Tagtable,Bool,false,false,false,I1.5,
 Water_Red_Top,Default Tagtable,Bool,false,false,false,Q0.4,
 Water_Red_Bottom,Default Tagtable,Bool,false,false,false,Q0.5,
 Water_Green,Default Tagtable,Bool,false,false,false,Q0.6,

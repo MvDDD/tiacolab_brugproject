@@ -2,16 +2,15 @@
 specialname,tagname,type,address,type,address,comment
 %EM_STOP%,"""em_stop""",Bool,I0.0,Bool,I0.0,
 ,"""Reset Button""",Bool,I0.1,Bool,I0.1,
-%BARRIER_CLOSED%,"""Gate Closed""",Bool,I0.3,,,slagboom is open?
-%BARRIER_OPENED%,"""Gate Open""",Bool,I0.4,,,slagboom is gesloten?
-,"""LightSwitch Left""",Bool,I0.5,Bool,I0.5,switch for boat left
-,"""LightSwitch Middle""",Bool,I0.6,Bool,I0.6,switch for boat middle
-,"""LightSwitch Right""",Bool,I0.7,Bool,I0.7,switch for boat right
+%BARRIER_CLOSED%,"""Gate Closed""",Bool,I0.2,Bool,I0.2,slagboom is open?
+,"""LightSwitch Left""",Bool,I0.3,Bool,I0.3,switch for boat left
+,"""LightSwitch Middle""",Bool,I0.4,Bool,I0.4,switch for boat middle
+,"""LightSwitch Right""",Bool,I0.5,Bool,I0.5,switch for boat right
+,"""homing sensor""",Bool,I0.6,Bool,I0.6,
 %BARRIER_OPEN%,"""Open Gate""",Bool,Q0.0,Bool,Q0.0,openen van de slagboom
 ,"""Road_Yellow""",Bool,Q0.1,Bool,Q0.1,
 ,"""Road_Green""",Bool,Q0.2,Bool,Q0.2,
 ,"""Road_Red""",Bool,Q0.3,Bool,Q0.3,
-,"""homing sensor""",Bool,I1.5,Bool,I1.5,
 ,"""Water_Red_Top""",Bool,Q0.4,Bool,Q0.4
 ,"""Water_Red_Bottom""",Bool,Q0.5,Bool,Q0.5
 ,"""Water_Green""",Bool,Q0.6,Bool,Q0.6
