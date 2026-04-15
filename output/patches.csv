@@ -6,6 +6,13 @@
 %E_UNSOLVABLE%,%E_UNSOLVABLE%,No patches
 %E_SERVO%,%E_SERVO%
 ,,16#100 -> %E_SERVO% at blocks/AutoHome.SCL line 20 col 10
+%POPUP_AUTOHOME%,%POPUP_AUTOHOME%
+,,1 -> %POPUP_AUTOHOME% at blocks/MAINLOOP.SCL line 20 col 26
+%SCREEN_HOME%,%SCREEN_HOME%,No patches
+%SCREEN_DEBUG%,%SCREEN_DEBUG%,No patches
+%SCREEN_MANUAL%,%SCREEN_MANUAL%,No patches
+%SCREEN_OVERRIDE%,%SCREEN_OVERRIDE%,No patches
+%SCREEN_AUTO%,%SCREEN_AUTO%,No patches
 %end_position%,%end_position%,No patches
 %AXIS%,%AXIS%
 ,,BrugAansturing_axis_Rik -> %AXIS% at blocks/AutoHome.SCL line 8 col 1
@@ -14,14 +21,12 @@
 %STEP_INIT%,%STEP_INIT%
 ,,0 -> %STEP_INIT% at blocks/Main.SCL line 6 col 15
 ,,0 -> %STEP_INIT% at blocks/MAINLOOP.SCL line 11 col 5
-,,No patches
 %STEP_MAINLOOP%,%STEP_MAINLOOP%
 ,,40 -> %STEP_MAINLOOP% at blocks/MAINLOOP.SCL line 15 col 26
 ,,40 -> %STEP_MAINLOOP% at blocks/MAINLOOP.SCL line 37 col 26
 ,,40 -> %STEP_MAINLOOP% at blocks/MAINLOOP.SCL line 43 col 5
 %IS_MARK%,%IS_MARK%,No patches
 %IS_RIK%,%IS_RIK%,No patches
-%E_ERR%,%E_ERR%,No patches
 %BARRIER_CLOSED%,%BARRIER_CLOSED%,No patches
 %SCREEN_NUMBER%,%SCREEN_NUMBER%,No patches
 %BARRIER_OPEN%,%BARRIER_OPEN%,No patches

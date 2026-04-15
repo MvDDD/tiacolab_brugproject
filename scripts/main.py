@@ -100,6 +100,7 @@ def load_replacements(constants_dir="constants"):
                 next(reader, None)
                 for parts in reader:
                     if not parts: continue
+                    print(path, parts)
                     replacement_text = parts[1] if sys.argv[1]=="rik" else parts[2]
                     table[parts[0]] = Replacement(parts[0], replacement_text)
     return table
