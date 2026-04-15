@@ -2,10 +2,10 @@
 <DownloadTask>
   <ProjectInfo
     DeviceVersion="17.0.0.0"
-    CreationTime="2026-03-10 11:19:42 (UTC)"
+    CreationTime="2026-04-14 08:55:13 (UTC)"
     Runtime="SMART"
-    RtProjectName="Brug_Project.HMI_1[KTP700 Basic PN]"
-    RtProjectFolderName="Brug_Project.HMI_1[KTP700 Basic PN]"
+    RtProjectName="template.HMI_1[KTP700 Basic PN]"
+    RtProjectFolderName="template.HMI_1[KTP700 Basic PN]"
     DeviceType="KTP700_Basic"
     DisplayOrientation="0"
     RTReleaseNo="17.0.0.0"
