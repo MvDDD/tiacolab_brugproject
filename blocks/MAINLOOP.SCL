@@ -1,88 +1,98 @@
 temp : temp Word;
 RETURN Void;
 
-CASE %PC_MAIN% OF
-REGION "Error"
-%STEP_ERROR%:    //error state: do nothing
-// PASS (* locks the main counter *)
-;
-END_REGION
-REGION "INIT"
-    %STEP_INIT%:    //init state
-        // check if autohome is needed
-        #temp := "boot state"();
-        IF #temp == %BOOT_NO_HOME% THEN
-            %PC_MAIN% := %STEP_MAINLOOP%; //no homing needed: jump to mainloop
-        ELSE;
-            %PC_MAIN% := 10; //homing needed  
-        END_IF;
-    10:
-        #temp := "popup"(%POPUP_AUTOHOME%)
-        IF #temp != 0 THEN // 0 means no result yet
-            IF #temp == 1 THEN // 1 means OK button pressed
-                %PC_MAIN% := 30;
+IF ("HMI_Screen_Number" = 0) THEN
+    CASE "ProgramCounter" OF
+        0: // idle/waiting: check buttons
+            IF ("HMI_Result" <> 0) THEN
+                CASE "HMI_Result" OF
+                    1: //hidden
+                        "HMI_Screen_Number" := 3;
+                    2: //debug
+                        "HMI_Screen_Number" := 1;
+                    3: // manual
+                        "HMI_Screen_Number" := 2;
+                    4: // nominal
+                        "HMI_Screen_Number" := 4;
+                    5: // home
+                        "ProgramCounter" := 10;
+                END_CASE;
             END_IF;
-            IF #temp == 2 THEN // 2 means Cancel button pressed
-                %PC_MAIN% := 20;
+        10:
+            "HMI_Popup" := 1; // display autohome popup
+            IF ("HMI_Popup_Result" <> 0) THEN // if result ready:
+                "HMI_Popup" := 0;     // close  popup
+                IF ("HMI_Popup_Result" = 1) THEN
+                    "ProgramCounter" := 20; //  next step
+                ELSE
+                    ;
+                    "ProgramCounter" := 0;
+                END_IF;
             END_IF;
-        END_IF;
-        ;
-    20:
-        IF "warn"(%WARN_AUTOHOME_NEEDED%) THEN
-            %PC_MAIN% := 10;
-        END_IF;
-       ;
-    30: // start homing
-        IF "AutoHome"() THEN
-            %PC_MAIN% := %STEP_MAINLOOP%; // and jump to mainloop when done
-        END_IF;
-        ;
+            ;
+        20:
+            IF "AutoHome Sequence"() THEN //wait for autohome ready
+                "ProgramCounter" := 30;
+            ELSE;                          // if busy
+                IF ("HMI_Result" <> 0) THEN // and any hmi button pressed
+                    "Warning"(0); //warn is busy
+                END_IF;
+            END_IF;
+            ;
+        30:
+            "ProgramCounter" := 0;
+            ;
+    END_CASE;
+    
+    
+    
+ELSIF ("HMI_Screen_Number" = 1) THEN
+    CASE "ProgramCounter" OF
+        0:
+            IF ("HMI_Result" <> 0) THEN
+                CASE "HMI_Result" OF
+                    1:
+                        "HMI_Screen_Number" := 0;
+                END_CASE;
+            END_IF;
+    END_CASE;
 
-END_REGION
-REGION MAINLOOP
-    %STEP_MAINLOOP%:
-        IF %BOAT_ARRIVED_LEFT% OR %BOAT_ARRIVED_RIGHT% THEN 
-            #temp = %BOAT_ARRIVED_LEFT%;
-            %PC_MAIN% := 50;
-        END_IF;
-        ;
-    50:
-        "log"(%L_BOAT_DETECTED%);
-        IF "open bridge"() THEN
-            "log"(%L_BRUG_OPENED%);
-            %OPENCOUNTER% += 1;
-            %PC_MAIN% := 60;
-        END_IF;
-        ;
-    60: 
-        IF "boat passed"(#temp) THEN
-            "log"(%L_BOAT_PASSED%);
-            %PC_MAIN% := 70;
-        END_IF;
-        ;
-    70:
-        IF %OPENCOUNTER% > 10 THEN
-            #temp := "close bridge homing"();
-        ELSE;
-            #temp := "close bridge"()
-        END_IF;
-        IF #temp THEN
-            "log"(%L_BRUG_CLOSED%);
-            %PC_MAIN% := 80;
-        END_IF;
-        ;
-    80:
-        ;
-    90:
-        ;
-    100:
-		%PC_MAIN% := %STEP_MAINLOOP;
-        ;
-END_REGION
-END_CASE;
 
-REGION threads
-    IF "MANUAL_OVERRIDE" THEN
-        "throw"(%ERROR_SOLVABLE%);
-    END_IF;
-END_REGION
+ELSIF ("HMI_Screen_Number" = 2) THEN
+    CASE "ProgramCounter" OF
+        0:
+            IF ("HMI_Result" <> 0) THEN
+                CASE "HMI_Result" OF
+                    1:
+                        "HMI_Screen_Number" := 0;
+                END_CASE;
+            END_IF;
+    END_CASE;
+    
+    
+ELSIF ("HMI_Screen_Number" = 3) THEN
+    CASE "ProgramCounter" OF
+        0:
+            IF ("HMI_Result" <> 0) THEN
+                CASE "HMI_Result" OF
+                    1:
+                        "HMI_Screen_Number" := 0;
+                END_CASE;
+            END_IF;
+    END_CASE;
+    
+    
+ELSIF ("HMI_Screen_Number" = 4) THEN
+    CASE "ProgramCounter" OF
+        0:
+            IF ("HMI_Result" <> 0) THEN
+                CASE "HMI_Result" OF
+                    1:
+                        "HMI_Screen_Number" := 0;
+                END_CASE;
+            END_IF;
+    END_CASE;
+END_IF;
+
+"HMI_Result" := 0;
+"HMI_Popup_Result" := 0;
