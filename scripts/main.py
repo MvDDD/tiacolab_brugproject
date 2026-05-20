@@ -10,7 +10,7 @@ import time
 # Logging
 # -----------------------------
 def init_logging(log_path="./tia.log"):
-    open(log_path, "w").close()
+    open(log_path, "w").close() # clear logfile
     tia.set_logging(log_path, False)
 
 # -----------------------------

@@ -1,9 +1,10 @@
 temp : temp Word;
 RETURN Void;
 
+// homescreen {white , 42}
 IF ("HMI_Screen_Number" = 0) THEN
     CASE "ProgramCounter" OF
-        0: // idle/waiting: check buttons
+        0: // idle/waiting: check buttons {green, 14}
             IF ("HMI_Result" <> 0) THEN
                 CASE "HMI_Result" OF
                     1: //hidden
@@ -18,11 +19,11 @@ IF ("HMI_Screen_Number" = 0) THEN
                         "ProgramCounter" := 10;
                 END_CASE;
             END_IF;
-        10:
+        10: // autohome pressed {red, 11}
             "HMI_Popup" := 1; // display autohome popup
             IF ("HMI_Popup_Result" <> 0) THEN // if result ready:
                 "HMI_Popup" := 0;     // close  popup
-                IF ("HMI_Popup_Result" = 1) THEN
+                IF ("HMI_Popup_Result" = 1) THEN // if button OK:
                     "ProgramCounter" := 20; //  next step
                 ELSE
                     ;
@@ -30,28 +31,27 @@ IF ("HMI_Screen_Number" = 0) THEN
                 END_IF;
             END_IF;
             ;
-        20:
-            IF "AutoHome Sequence"() THEN //wait for autohome ready
+        20: // autohome start { blue, 8}
+            IF "AutoHome Sequence"() THEN //wait for autohome ready {red, 1}
                 "ProgramCounter" := 30;
-            ELSE;                          // if busy
+            ELSE;                          // if busy {red, 4}
                 IF ("HMI_Result" <> 0) THEN // and any hmi button pressed
                     "Warning"(0); //warn is busy
                 END_IF;
             END_IF;
             ;
-        30:
+        30: // done: resume at 0 {pink, 2}
             "ProgramCounter" := 0;
             ;
     END_CASE;
-    
-    
-    
+
+// debug {white, 10}
 ELSIF ("HMI_Screen_Number" = 1) THEN
     CASE "ProgramCounter" OF
-        0:
+        0: // check buttons {red, 6}
             IF ("HMI_Result" <> 0) THEN
                 CASE "HMI_Result" OF
-                    1:
+                    1: // return pressed {blue, 1}
                         "HMI_Screen_Number" := 0;
                 END_CASE;
             END_IF;
@@ -68,8 +68,8 @@ ELSIF ("HMI_Screen_Number" = 2) THEN
                 END_CASE;
             END_IF;
     END_CASE;
-    
-    
+
+
 ELSIF ("HMI_Screen_Number" = 3) THEN
     CASE "ProgramCounter" OF
         0:
@@ -80,8 +80,8 @@ ELSIF ("HMI_Screen_Number" = 3) THEN
                 END_CASE;
             END_IF;
     END_CASE;
-    
-    
+
+
 ELSIF ("HMI_Screen_Number" = 4) THEN
     CASE "ProgramCounter" OF
         0:
@@ -94,5 +94,11 @@ ELSIF ("HMI_Screen_Number" = 4) THEN
     END_CASE;
 END_IF;
 
+
 "HMI_Result" := 0;
 "HMI_Popup_Result" := 0;
+
+
+
+
+// hmi updates here: sets buttons, reads state etc
