@@ -1,0 +1,6 @@
+DATA_BLOCK : error 
+{ S7_Optimized_Access := 'TRUE' }VERSION : 0.1
+NON_RETAIN	VAR		name {ExternalAccessible := 'FALSE'; ExternalVisible := 'FALSE'; ExternalWritable := 'FALSE'} : type; comment
+	END_VARBEGIN
+
+END_DATA_BLOCK

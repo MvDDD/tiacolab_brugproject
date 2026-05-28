@@ -1,0 +1,16 @@
+﻿FUNCTION "Screen_nominal" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+
+BEGIN
+	CASE "progcounter0" OF
+	    0:
+	        IF ("HMI_Result" <> 0 AND "HMI".messageBox[1] <> 2) THEN
+	        CASE "HMI_Result" OF
+	            1:
+	                "showScreen"(0);
+	        END_CASE;
+	    END_IF;
+	END_CASE;
+END_FUNCTION
+

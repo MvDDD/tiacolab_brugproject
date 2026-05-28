@@ -1,0 +1,76 @@
+﻿RETURN VOID;
+
+CASE "progcounter0" OF
+	0:
+		"showScreen"(3);
+		IF ("HMI_Result" <> 0 AND "HMI".messageBox[1] <> 2) THEN
+			CASE "HMI_Result" OF
+				1:
+					"showScreen"(0);
+				2: // forwards
+					"progcounter0" := 10; 
+				4: //velocity incr
+					"Servo_Velocity" := "Servo_Velocity" + 5;
+					"progcounter0" := 500; // limit and calculate
+				3: // reverse
+					"progcounter0" := 20; 
+				5: // velocity decr
+					"Servo_Velocity" := "Servo_Velocity" - 5;
+					"progcounter0" := 500; // limit and calculate
+				6: // open gate
+					"progcounter0" := 30;
+				7: // close gate
+					"progcounter0" := 40;
+			END_CASE;
+		END_IF;
+	10: // forward
+		"should_reset_hmi" := FALSE;
+		"MC_MoveJog_DB"(Axis := "BrugAansturing_axis_Rik",
+			JogForward := TRUE, JogBackward := FALSE,
+			Velocity := "ServoSpeed"
+		);
+
+		IF ("HMI_Result" <> 2) THEN
+			"Open Gate" := 0;
+			"should_reset_hmi" := TRUE;
+			"MC_Halt_DB"(Axis := "BrugAansturing_axis_Rik",
+						 Execute := TRUE);
+			"progcounter0" := 0;
+		END_IF;
+
+	20: // reverse
+		"should_reset_hmi" := FALSE;
+		"MC_MoveJog_DB"(
+			Axis := "BrugAansturing_axis_Rik",
+			JogForward := FALSE, JogBackward := TRUE,
+			Velocity := "ServoSpeed"
+		);
+		IF ("HMI_Result" <> 4) THEN
+			"should_reset_hmi" := TRUE;
+			"MC_Halt_DB"(Axis := "BrugAansturing_axis_Rik",
+						 Execute := TRUE);
+			"progcounter1" := 0;
+		END_IF;
+	30: // gate open
+		IF "gates"(1) THEN
+			"progcounter1" := 0;
+		END_IF;
+		IF ("HMI_Result" <> 0) THEN "warning"(%WARNING_BUSY%); END_IF;
+	40: // gates close
+		IF "gates"(0) THEN
+			"progcounter1" := 0;
+		END_IF;
+		IF ("HMI_Result" <> 0) THEN "warning"(%WARNING_BUSY%); END_IF;
+
+
+
+	500:
+		IF (%SERVO_INPUT_VELOCITY% > 99) THEN
+			"Servo_Velocity" := 99;
+		ELSEIF ("Servo_Velocity" < 0) THEN
+			"Servo_Velocity" := 0;
+		END_IF;
+		"ServoSpeed" := NORM_X(MIN := 0, VALUE := "Servo_Velocity", MAX := 99);
+		"ServoSpeed" := "ServoSpeed" * 40.0;
+
+END_CASE;

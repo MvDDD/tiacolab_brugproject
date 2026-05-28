@@ -1,0 +1,9 @@
+﻿num : input UInt;
+RETURN VOID;
+
+
+"HMI_Screen_Number" := #num;
+"HMI".messageBox[0] := 51;
+"HMI".messageBox[1] := #num+1;
+"HMI".messageBox[2] := 0;
+"HMI".messageBox[3] := 0;

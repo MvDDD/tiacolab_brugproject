@@ -1,0 +1,3 @@
+﻿messageBox : Array[0..3] of Word;
+warn : Word;
+error : Word;

@@ -1,0 +1,54 @@
+FUNCTION "Opening Sequence" : Bool
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+BEGIN
+
+// makes bridge open for boats
+
+// %RETURN FALSE;
+
+#"Opening Sequence" := FALSE;
+CASE "progcounter1" OF
+    0: //starts at 0
+        "Road_Yellow" := TRUE;
+        "Road_Green" := FALSE;
+        "Road_Red" := FALSE;
+		"progcounter1" := 10; // traffic light to yellow
+	10:
+        IF "timer"(T#3s) THEN // 3sec later traffic light to red
+            "Road_Red" := TRUE;
+            "Road_Yellow" := FALSE;
+            "progcounter1" := 20; 
+        END_IF;
+    20:
+        IF "timer"(T#2s) THEN // then 2sec later close gate
+            "progcounter1" := 30;
+        END_IF;
+	30:
+		IF "gates"(0) THEN //wait for gate to close
+			"progcounter1" := 40;
+		END_IF;
+    40: 
+        "MC_MoveAbsolute_DB"(
+			Axis:="BrugAansturing_axis_Rik", //open the bridge
+            Execute:=TRUE,
+            Position:=40,
+            Velocity:=10.0 // arbitrary float placeholder, should be 10 mm/s or 10deg/s, or perhaps 10rad/s or 10radian/s
+			// optional args omitted
+        );
+        IF "MC_MoveAbsolute_DB".statusbits.Done THEN // when done
+            "progcounter1" := 50; // next step
+        END_IF;
+        ;
+    50:
+        IF "timer"(T#2s) THEN
+            "Road_Yellow" := FALSE;
+            "Road_Green" := TRUE;
+            "Road_Red" := FALSE;
+            "progcounter1" := 0;
+//             %RETURN := TRUE;
+
+            #"Opening Sequence" := := TRUE;
+        END_IF;
+END_CASE;
+END_FUNCTION

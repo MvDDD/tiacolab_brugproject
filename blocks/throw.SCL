@@ -1,6 +1,0 @@
-errorcode : input Word;
-RETURN Void;
-
-%ERR_PC_MAIN% := %PC_MAIN%;
-%PC_MAIN% := %STEP_ERROR%;
-%E_CODE% := %errorcode%;

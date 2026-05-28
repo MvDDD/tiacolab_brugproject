@@ -1,0 +1,74 @@
+﻿FUNCTION "Screen_manual_override" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+
+BEGIN
+	CASE "progcounter0" OF
+	    0:
+	        "showScreen"(3);
+	        IF ("HMI_Result" <> 0 AND "HMI".messageBox[1] <> 2) THEN
+	            CASE "HMI_Result" OF
+	                1:
+	                    "showScreen"(0);
+	                2:
+	                    "progcounter0" := 10; //forwards
+	                4: //velocity incr
+	                    "Servo_Velocity" := "Servo_Velocity" + 5;
+	                    IF ("Servo_Velocity" > 99) THEN
+	                        "Servo_Velocity" := 99;
+	                    END_IF;
+	                    "ServoSpeed" := NORM_X(MIN := 0, VALUE := "Servo_Velocity", MAX := 96);
+	                    "ServoSpeed" := "ServoSpeed" * 40.0;
+	                    ;
+	                3:
+	                    "progcounter0" := 20; //reverse
+	                5: //velocity decr
+	                    "Servo_Velocity" := "Servo_Velocity" - 5;
+	                    IF ("Servo_Velocity" < 0) THEN
+	                        "Servo_Velocity" := 0;
+	                    END_IF;
+	                    "ServoSpeed" := NORM_X(MIN := 0, VALUE := "Servo_Velocity", MAX := 96);
+	                    "ServoSpeed" := "ServoSpeed" * 40.0;
+	                    ;
+	                6:
+	                    "progcounter0" := 30;
+	                    ;
+	                7:
+	                    "progcounter0" := 40;
+	                    ;
+	            END_CASE;
+	        END_IF;
+	        ;
+	    10: //forward
+	        "MC_MoveJog_DB"(Axis := "BrugAansturing_axis_Rik",
+	                        JogForward := TRUE,
+	                        JogBackward := FALSE,
+	                        Velocity := "ServoSpeed");
+	        IF ("HMI_Result" <> 2) THEN
+	            "Open Gate" := 0;
+	            "MC_Halt_DB"(Axis := "BrugAansturing_axis_Rik",
+	                         Execute := TRUE);
+	            "progcounter0" := 0;
+	        END_IF;
+	    20:
+	        "MC_MoveJog_DB"(Axis := "BrugAansturing_axis_Rik",
+	                        JogForward := FALSE,
+	                        JogBackward := TRUE,
+	                        Velocity := "ServoSpeed"
+	        );
+	        IF ("HMI_Result" <> 4) THEN
+	            "MC_Halt_DB"(Axis := "BrugAansturing_axis_Rik",
+	                         Execute := TRUE);
+	            "progcounter0" := 0;
+	        END_IF;
+	    30: // gate open
+	        IF "gates"(1) THEN
+	            "progcounter1" := 0;
+	        END_IF;
+	    40: // gates close
+	        IF "gates"(0) THEN
+	            "progcounter1" := 0;
+	        END_IF;
+	END_CASE;
+END_FUNCTION
+

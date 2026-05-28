@@ -1,0 +1,44 @@
+﻿FUNCTION "Screen_auto" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+
+BEGIN
+	CASE "progcounter0" OF
+	    0:
+	        IF ("HMI_Result" <> 0 AND "HMI".messageBox[1] <> 2) THEN
+	            CASE "HMI_Result" OF
+	                1:
+	                    "showScreen"(0);
+	                    ;
+	                2: //opening button
+	                    "progcounter0" := 10;
+	                    ;
+	                3: //closing button
+	                    "progcounter0" := 20;
+	                    ;
+	            END_CASE;
+	        END_IF;
+	        ;
+	    10:
+	        IF "Opening Sequence"() THEN
+	            "progcounter0" := 0;
+	        END_IF;
+	        IF "HMI_Result" <> 0 THEN
+	            "return" := 10;
+	            "progcounter0" := 30;
+	        END_IF;
+	    20:
+	        IF "Closing Sequence"() THEN
+	            "progcounter0" := 0;
+	        END_IF;
+	        IF "HMI_Result" <> 0 THEN
+	            "return" := 20;
+	            "progcounter0" := 30;
+	        END_IF;
+	    30:
+	        
+	        "progcounter0" := "return";
+	        "return" := 0;
+	END_CASE;
+END_FUNCTION
+

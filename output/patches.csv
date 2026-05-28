@@ -1,44 +1,23 @@
-%E_OK%,%E_OK%
-,,0 -> %E_OK% at blocks/ERRORLOOP.SCL line 8 col 18
-,,0 -> %E_OK% at blocks/Main.SCL line 8 col 14
-%E_SOLVABLE%,%E_SOLVABLE%
-,,16#1000 -> %E_SOLVABLE% at blocks/AutoHome.SCL line 20 col 66
+NAME,NAME,No patches
+,,No patches
+%E_OK%,%E_OK%,No patches
+%E_SOLVABLE%,%E_SOLVABLE%,No patches
 %E_UNSOLVABLE%,%E_UNSOLVABLE%,No patches
-%E_SERVO%,%E_SERVO%
-,,16#100 -> %E_SERVO% at blocks/AutoHome.SCL line 20 col 10
-%POPUP_AUTOHOME%,%POPUP_AUTOHOME%
-,,1 -> %POPUP_AUTOHOME% at blocks/MAINLOOP.SCL line 20 col 26
+%E_SERVO%,%E_SERVO%,No patches
+%POPUP_AUTOHOME%,%POPUP_AUTOHOME%,No patches
 %SCREEN_HOME%,%SCREEN_HOME%,No patches
 %SCREEN_DEBUG%,%SCREEN_DEBUG%,No patches
 %SCREEN_MANUAL%,%SCREEN_MANUAL%,No patches
 %SCREEN_OVERRIDE%,%SCREEN_OVERRIDE%,No patches
 %SCREEN_AUTO%,%SCREEN_AUTO%,No patches
 %end_position%,%end_position%,No patches
-%AXIS%,%AXIS%
-,,BrugAansturing_axis_Rik -> %AXIS% at blocks/AutoHome.SCL line 8 col 1
-,,BrugAansturing_axis_Rik -> %AXIS% at blocks/AutoHome.SCL line 9 col 20
-,,BrugAansturing_axis_Rik -> %AXIS% at blocks/AutoHome.SCL line 23 col 3
-%STEP_INIT%,%STEP_INIT%
-,,0 -> %STEP_INIT% at blocks/Main.SCL line 6 col 15
-,,0 -> %STEP_INIT% at blocks/MAINLOOP.SCL line 11 col 5
-%STEP_MAINLOOP%,%STEP_MAINLOOP%
-,,40 -> %STEP_MAINLOOP% at blocks/MAINLOOP.SCL line 15 col 26
-,,40 -> %STEP_MAINLOOP% at blocks/MAINLOOP.SCL line 37 col 26
-,,40 -> %STEP_MAINLOOP% at blocks/MAINLOOP.SCL line 43 col 5
+%AXIS%,%AXIS%,No patches
 %IS_MARK%,%IS_MARK%,No patches
 %IS_RIK%,%IS_RIK%,No patches
-%BARRIER_CLOSED%,%BARRIER_CLOSED%,No patches
-%SCREEN_NUMBER%,%SCREEN_NUMBER%,No patches
-%BARRIER_OPEN%,%BARRIER_OPEN%,No patches
-%E_TEMP_PC0%,%E_TEMP_PC0%,No patches
+%HMI_POPUP_RESULT%,%HMI_POPUP_RESULT%,No patches
 %HMI_RESULT%,%HMI_RESULT%,No patches
+specialname,specialname,No patches
 %HMI_POPUP%,%HMI_POPUP%,No patches
-%EM_STOP%,%EM_STOP%,No patches
-%E_CODE%,%E_CODE%
-,,"""errorstatus"" -> %E_CODE% at blocks/ERRORLOOP.SCL line 8 col 6"
-,,"""errorstatus"" -> %E_CODE% at blocks/ERRORLOOP.SCL line 9 col 20"
-,,"""errorstatus"" -> %E_CODE% at blocks/ERRORLOOP.SCL line 10 col 9"
-,,"""errorstatus"" -> %E_CODE% at blocks/Main.SCL line 8 col 2"
-,,"""errorstatus"" -> %E_CODE% at blocks/throw.SCL line 6 col 1"
+%PC2%,%PC2%,No patches
 %PC1%,%PC1%,No patches
 %PC0%,%PC0%,No patches

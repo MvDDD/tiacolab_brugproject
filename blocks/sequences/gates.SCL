@@ -1,0 +1,54 @@
+﻿open : input Bool;
+RETURN Bool;
+
+
+RETURN FALSE;
+
+CASE "progcounter2" OF
+	0:
+		IF #open THEN //if gate must open
+			IF "Gate 2 Closed" AND "Gate Closed" THEN //if already open: return
+				"progcounter2" := 30;
+			ELSE // not already open: set open and continue
+				;
+				"Open Gate" := 1;
+				"progcounter2" := 10;
+			END_IF;
+		ELSIF NOT #open THEN//if gate must close
+			IF (NOT "Gate 2 Closed") AND (NOT "Gate Closed") THEN //if already closed: return
+				"progcounter2" := 30;
+			ELSE //not already closed: close and continue
+				;
+				"Open Gate" := 0;
+				"progcounter2" := 10;
+			END_IF;
+		END_IF;
+	10:
+		IF #open THEN //if the gates nust open:
+			IF ("Gate Closed") AND ("Gate 2 Closed") THEN
+				//if opened: switch released, still needs to swing
+				"IEC_Timer_0_DB".TON(IN := FALSE,
+									 PT := T#3s); //escape timeout
+				"progcounter2" := 20; //next step
+			END_IF;
+		ELSIF NOT #open THEN //if gates must close: 
+				;
+			IF (NOT "Gate Closed") AND (NOT "Gate 2 Closed") THEN
+				// if closed: gates swung down: return
+				"progcounter2" := 30; //return
+			END_IF;
+		END_IF;
+		IF "timer"(T#3s) THEN // timeout of 3 seconds
+			// if timeout triggered: 
+			"progcounter2" := 0; // reset step to initial, 
+			"Error"(4);          // and return error
+		END_IF;
+	20:
+		IF "timer"(T#2s) THEN // after 2s the gates are fully open
+			"progcounter2" := 30;
+		END_IF;
+	30:
+		"progcounter2" := 0;
+		%RETURN TRUE;
+END_CASE;
+

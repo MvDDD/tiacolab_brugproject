@@ -1,0 +1,18 @@
+FUNCTION "Screen_debug" : VOID
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+BEGIN
+
+CASE "debugcounter" OF
+	0:
+		IF ("HMI_Result" <> 0) THEN
+			CASE "HMI_Result" OF
+				1: // on return -> show the screen the program is running
+					"HMI".messageBox[0] := 51;
+					"HMI".messageBox[1] := "HMI_Screen_Number";
+					"HMI".messageBox[2] := 0;
+					"HMI".messageBox[3] := 0;
+			END_CASE;
+		END_IF;
+END_CASE;
+END_FUNCTION

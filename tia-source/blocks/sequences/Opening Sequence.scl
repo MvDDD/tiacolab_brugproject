@@ -1,0 +1,57 @@
+﻿FUNCTION "Opening Sequence" : Bool
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_TEMP 
+      Q : Bool;
+   END_VAR
+
+
+BEGIN
+	#"Opening Sequence" := FALSE;
+	CASE "progcounter1" OF
+	    0: //starts at 0
+	        "Road_Yellow" := TRUE;
+	        "Road_Green" := FALSE;
+	        "Road_Red" := FALSE;
+	        IF "timer"(T#3s) THEN
+	            "Road_Red" := TRUE;
+	            "Road_Yellow" := FALSE;
+	            "progcounter1" := 10;
+	        END_IF
+	        ;
+	    20:
+	        IF "timer"(T#2s) THEN
+	            "Open Gate" := FALSE;
+	            "progcounter1" := 30;
+	        END_IF
+	        ;// make detecting circuit when gate closed
+	        //wait for gate to close
+	    
+	    30: 
+	        "MC_MoveAbsolute_DB"(Axis:="BrugAansturing_axis_Rik", //select your own axis here
+	                             Execute:=TRUE,
+	                             Position:=40, //edit this value to your own end position
+	                             Velocity:="Servo_Velocity"
+	                             (*Direction:=_int_in_,
+	                             Done=>_bool_out_,
+	                             Busy=>_bool_out_,
+	                             CommandAborted=>_bool_out_,
+	                             Error=>_bool_out_,
+	                             ErrorID=>_word_out_,
+	                             ErrorInfo=>_word_out*));
+	        IF "MC_MoveAbsolute_DB".Done THEN
+	            "progcounter1" := 40;
+	        END_IF;
+	        ;
+	    40:
+	        IF "timer"(T#2s) THEN
+	            "Road_Yellow" := FALSE;
+	            "Road_Green" := TRUE;
+	            "Road_Red" := FALSE;
+	            "progcounter1" := 0;
+	            #"Opening Sequence" := TRUE;
+	        END_IF;
+	END_CASE;
+	RETURN;
+END_FUNCTION
+

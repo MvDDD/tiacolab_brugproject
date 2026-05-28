@@ -1,0 +1,63 @@
+﻿FUNCTION "Screen_home" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+
+BEGIN
+	CASE "progcounter0" OF
+	    0: // idle/waiting: check buttons
+	        IF ("HMI_Result" <> 0 AND "HMI".messageBox[1] <> 2) THEN
+	            CASE "HMI_Result" OF
+	                1: //hidden
+	                    "showScreen"(3);
+	                2: //debug
+	                    "HMI".messageBox[0] := 51;
+	                    "HMI".messageBox[1] := 2;
+	                    "HMI".messageBox[2] := 0;
+	                    "HMI".messageBox[3] := 0;
+	                3: // manual
+	                    "showScreen"(2);
+	                4: // nominal
+	                    "showScreen"(4);
+	                5: // home
+	                    "progcounter0" := 10;
+	                6: // start servo
+	                    "progcounter0" := 40;
+	                7: // stop servo
+	                    "progcounter0" := 50;
+	            END_CASE;
+	        END_IF;
+	    10:
+	        "HMI_Popup" := 1; // display autohome popup
+	        IF ("HMI_Popup_Result" <> 0) THEN // if result ready:
+	            "HMI_Popup" := 0;     // close  popup
+	            IF ("HMI_Popup_Result" = 1) THEN
+	                "progcounter0" := 20; //  next step
+	            ELSE
+	                ;
+	                "progcounter0" := 0;
+	            END_IF;
+	        END_IF;
+	        ;
+	    20:
+	        IF "AutoHome Sequence"() THEN //wait for autohome ready
+	            "progcounter0" := 30;
+	        ELSE
+	            ;                          // if busy
+	            IF ("HMI_Result" <> 0) THEN // and any hmi button pressed
+	                "Warn"(0); //warn is busy
+	            END_IF;
+	        END_IF;
+	        ;
+	    30:
+	        "progcounter0" := 0;
+	        ;
+	    40:
+	        "MC_Power_DB"(Axis:="BrugAansturing_axis_Rik",Enable:=TRUE);
+	        "progcounter0" := 0;
+	    50:
+	        "MC_Power_DB"(Axis := "BrugAansturing_axis_Rik",
+	                      Enable := FALSE);
+	        "progcounter0" := 0;
+	END_CASE;
+END_FUNCTION
+

@@ -1,0 +1,112 @@
+﻿FUNCTION "gates" : Bool
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      open : Bool;
+   END_VAR
+
+
+BEGIN
+	#gates := FALSE;
+	
+	
+	CASE "progcounter2" OF
+	    0:
+	        IF #open THEN //if gate must open
+	            IF "Gate 2 Closed" AND "Gate Closed" THEN //if already open: return
+	                "progcounter2" := 30;
+	            ELSE // not already open: set open and continue
+	                ;
+	                "Open Gate" := 1;
+	                "progcounter2" := 10;
+	            END_IF;
+	        ELSIF NOT #open THEN//if gate must close
+	            IF (NOT "Gate 2 Closed") AND (NOT "Gate Closed") THEN //if already closed: return
+	                "progcounter2" := 30;
+	            ELSE //not already closed: close and continue
+	                ;
+	                "Open Gate" := 0;
+	                "progcounter2" := 10;
+	            END_IF;
+	        END_IF;
+	    10:
+	        IF #open THEN //if the gates nust open:
+	            IF ("Gate Closed") AND ("Gate 2 Closed") THEN
+	                //if opened: switch released, still needs to swing
+	                "IEC_Timer_0_DB".TON(IN := FALSE,
+	                                     PT := T#3s); //escape timeout
+	                "progcounter2" := 20; //next step
+	            END_IF;
+	        ELSIF NOT #open THEN //if gates must close: 
+	            ;
+	            IF (NOT "Gate Closed") AND (NOT "Gate 2 Closed") THEN
+	                // if closed: gates swung down: return
+	                "progcounter2" := 30; //return
+	            END_IF;
+	        END_IF;
+	        IF "timer"(T#3s) THEN
+	            "progcounter2" := 0;
+	            "Error"(4);
+	        END_IF;
+	    20:
+	        IF "timer"(T#2s) THEN
+	            "progcounter2" := 30;
+	        END_IF;
+	    30:
+	        "progcounter2" := 0;
+	        #gates := TRUE;
+	END_CASE;
+	        
+	(*
+	VAR
+	
+	
+	// Error outputs
+	Gate1_Error:
+	Bool;
+	Gate2_Error:
+	Bool;
+	
+	// Internal mismatch bits
+	"Gate1_Mismatch":
+	Bool;
+	"Gate2_Mismatch":
+	Bool;
+	
+	// Timers
+	
+	END_VAR
+	
+	
+	// --------------------------------------------------
+	// Gate 1
+	// --------------------------------------------------
+	
+	// Compare command with feedback
+	// LOW command  -> expect LOW switch
+	// HIGH command -> expect HIGH switch
+	
+	"Gate1_Mismatch" := ("Open Gate" <> "Gate Closed");
+	
+	// Start timer when mismatch exists
+	"Gate1_Timer".TON(IN := "Gate1_Mismatch",
+	                  PT := T#3s);
+	
+	
+	// Set error after 3 seconds mismatch
+	Gate1_Error := "Gate1_Timer".Q;
+	
+	
+	// --------------------------------------------------
+	// Gate 2
+	// --------------------------------------------------
+	
+	"Gate2_Mismatch" := (gat <> Gate2_Switch);
+	"Gate2_Timer".TON(IN := "Gate2_Mismatch",
+	                  PT := T#3s);
+	
+	
+	Gate2_Error := "Gate2_Timer".Q;
+	*)
+END_FUNCTION
+

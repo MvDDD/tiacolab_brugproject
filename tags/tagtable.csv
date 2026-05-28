@@ -1,16 +1,21 @@
 ,,| rik -,-------|,"|mark ",--------|,
 specialname,tagname,type,address,type,address,comment
-%EM_STOP%,"""em_stop""",Bool,I0.0,Bool,I0.0,
-,"""Reset Button""",Bool,I0.1,Bool,I0.1,
-%BARRIER_CLOSED%,"""Gate Closed""",Bool,I0.2,Bool,I0.2,slagboom is open?
-,"""LightSwitch Left""",Bool,I0.3,Bool,I0.3,switch for boat left
-,"""LightSwitch Middle""",Bool,I0.4,Bool,I0.4,switch for boat middle
-,"""LightSwitch Right""",Bool,I0.5,Bool,I0.5,switch for boat right
-,"""homing sensor""",Bool,I0.6,Bool,I0.6,
-%BARRIER_OPEN%,"""Open Gate""",Bool,Q0.0,Bool,Q0.0,openen van de slagboom
-,"""Road_Yellow""",Bool,Q0.1,Bool,Q0.1,
-,"""Road_Green""",Bool,Q0.2,Bool,Q0.2,
-,"""Road_Red""",Bool,Q0.3,Bool,Q0.3,
-,"""Water_Red_Top""",Bool,Q0.4,Bool,Q0.4
-,"""Water_Red_Bottom""",Bool,Q0.5,Bool,Q0.5
-,"""Water_Green""",Bool,Q0.6,Bool,Q0.6
+%SW_AUTO%,"""automodus""",,,Bool,%I0.0,
+%MIDE_HAND%,"""handmodus""",,,Bool,%I0.1,
+%BTN_STOP%,"""stopknop""",,,Bool,%I0.2,
+%BTN_START%,"""startknop""",,,Bool,%I0.3,
+%EM_DOWN%,"""Y32""",,,Bool,%I0.4,
+%ENDSW_OPEN%,"""eindsensor brug open""",,,Bool,%I0.5
+%ENDSW_CLOSED%,"""eindsensor brug dicht""",,,Bool,%I0.6
+%BOAT_LEFT%,"""bootsensor links""",,,Bool,%I0.7
+%BOAT_CENTER%,"""bootsensor midden""",,,Bool,%I1.0
+%BOAT_RIGHT%,"""bootsensor rechts""",,,Bool,%I1.1
+%GATE_CLOSED%,"""slagboom dicht""",,,Bool,%I1.2
+%GATE_OUT%,"""ventiel slagboom""",,,Bool,%Q0.0
+,,,,Bool,%Q0.1
+,,,,Bool,%Q0.2
+,,,,Bool,%Q0.3
+,,,,Bool,%Q0.4
+,,,,Bool,%Q0.5
+,,,,Bool,%Q0.6
+,,,,Bool,%Q0.7

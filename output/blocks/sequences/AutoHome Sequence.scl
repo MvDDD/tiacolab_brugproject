@@ -1,0 +1,38 @@
+FUNCTION "AutoHome Sequence" : Bool
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+VAR_TEMP
+    done  : Bool;
+    busy  : Bool;
+    error  : Bool;
+    aborted  : Bool;
+END_VAR
+BEGIN
+
+
+BEGIN
+// 	%RETURN := FALSE;
+
+	#"AutoHome Sequence" := := FALSE;
+	
+	"BrugAansturing_axis_Rik".PositionLimits_HW.Active := FALSE;
+	    "MC_Home_DB"(Axis := "BrugAansturing_axis_Rik",
+	                 Execute := TRUE,
+	                 Position := 0,
+	                 Mode := 3,
+	                 Done=>#done,
+	                 Busy=>#busy,
+	                 Error=>#error,
+	                 CommandAborted=>#aborted
+	    );
+	IF #done THEN
+	    "BrugAansturing_axis_Rik".PositionLimits_HW.Active := TRUE;
+// 	    %RETURN := TRUE;
+
+	    #"AutoHome Sequence" := := TRUE;
+	END_IF;
+	RETURN;
+END_FUNCTION
+
+
+END_FUNCTION

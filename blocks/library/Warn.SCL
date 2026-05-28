@@ -1,0 +1,4 @@
+﻿val : input Int;
+RETURN VOID;
+
+"HMI".warn := SHL(IN := BYTE_TO_DWORD(1), N := #val);

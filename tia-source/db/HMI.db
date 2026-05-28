@@ -1,0 +1,15 @@
+﻿DATA_BLOCK "HMI"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+NON_RETAIN
+   VAR 
+      messageBox : Array[0..3] of Word;
+      warn : Word;
+      error : Word;
+   END_VAR
+
+
+BEGIN
+
+END_DATA_BLOCK
+

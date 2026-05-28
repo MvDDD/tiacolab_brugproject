@@ -1,0 +1,10 @@
+FUNCTION "Error" : VOID
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+VAR_INPUT
+    num  : Int;
+END_VAR
+BEGIN
+
+"HMI".error := SHL(IN:=BYTE_TO_DWORD(1), N:=#num);
+END_FUNCTION

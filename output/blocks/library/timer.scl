@@ -1,0 +1,28 @@
+FUNCTION "timer" : Bool
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+VAR_INPUT
+    time  : Time;
+END_VAR
+BEGIN
+
+
+(*
+usage:
+
+AWAIT "timer"(T#<time>[s/m/h/d]) THEN
+
+*)
+
+
+#timer := FALSE;
+
+"IEC_Timer_0_DB".TON(IN := TRUE,
+                     PT := #time);
+
+IF "IEC_Timer_0_DB".Q THEN
+    "IEC_Timer_0_DB".TON(IN := FALSE,
+                         PT := #time);
+    #timer := TRUE;
+END_IF;
+END_FUNCTION

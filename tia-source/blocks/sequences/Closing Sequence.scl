@@ -1,0 +1,49 @@
+﻿FUNCTION "Closing Sequence" : Bool
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_TEMP 
+      Q : Bool;
+   END_VAR
+
+
+BEGIN
+	#"Closing Sequence" := FALSE;
+	
+	CASE "progcounter1" OF
+	    0: // boat traffic light sequence!!!
+	        
+	        ;
+	    10:
+	        "MC_MoveAbsolute_DB"(Axis:="BrugAansturing_axis_Rik",
+	                             Execute:=TRUE,
+	                             Position:=0,
+	                             Velocity:="Servo_Velocity"
+	                             (*Direction:=_int_in_,
+	                             Done=>_bool_out_,
+	                             Busy=>_bool_out_,
+	                             CommandAborted=>_bool_out_,
+	                             Error=>_bool_out_,
+	                             ErrorID=>_word_out_,
+	                             ErrorInfo=>_word_out*));
+	                             IF "BrugAansturing_axis_Rik".StatusBits.Done THEN
+	                                 "progcounter1" := 20;
+	                             END_IF
+	        ;
+	    20:
+	    "IEC_Timer_0_DB".TON(IN := TRUE,
+	                         PT := T#1s,
+	                         Q => #Q);
+	        IF #Q = TRUE THEN
+	            RESET_TIMER("IEC_Timer_0_DB");
+	            "Road_Green" := TRUE;
+	            "Road_Red" := FALSE;
+	            "Open Gate" := TRUE;
+	            "progcounter1" := 0;
+	            #"Closing Sequence" := TRUE;
+	        END_IF;
+	END_CASE;
+	RETURN;
+	
+	
+END_FUNCTION
+

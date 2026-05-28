@@ -1,0 +1,43 @@
+﻿FUNCTION "MAINLOOP" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+
+BEGIN
+	IF "HMI".error = 0 THEN
+	    
+	    IF ("HMI_Screen_Number" = 0) THEN
+	        "Screen_home"();
+	    ELSIF ("HMI_Screen_Number" = 2) THEN
+	        "Screen_auto"();
+	    ELSIF ("HMI_Screen_Number" = 3) THEN
+	        "Screen_manual_override"();
+	    ELSIF ("HMI_Screen_Number" = 4) THEN
+	        "Screen_nominal"();
+	    END_IF;
+	    
+	    // debug screen (only visual)
+	    IF ("HMI".messageBox[1] = 1) THEN
+	        "Screen_debug"();
+	    END_IF;
+	    
+	    
+	    // and lastly: reset the hmi event registers
+	    IF NOT ("HMI_Screen_Number" = 3 AND ("progcounter0" = 10 OR "progcounter0" = 20)) THEN
+	        "HMI_Result" := 0;
+	        "HMI_Popup_Result" := 0;
+	    END_IF;
+	    
+	ELSE
+	    ;
+	    (*IF break_all_and_reset THEN
+	        "progcounter0" := 0;
+	        "progcounter1" := 0;
+	        "progcounter2" := 0;
+	    END_IF;
+	    IF resolved THEN
+	      *)  "HMI"."error" := 0;
+	   (* END_IF;
+	    *)
+	END_IF;
+END_FUNCTION
+

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Tags.PlcTagTable ID="0">
+    <AttributeList>
+      <Name>PLC tags</Name>
+    </AttributeList>
+  </SW.Tags.PlcTagTable>
+</Document>

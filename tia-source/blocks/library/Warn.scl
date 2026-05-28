@@ -1,0 +1,19 @@
+﻿FUNCTION "Warn" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      val_1 : Int;
+   END_VAR
+
+   VAR_TEMP 
+      db_idx : Int;
+      val : Int;
+   END_VAR
+
+
+BEGIN
+	"HMI".warn := SHL(IN := BYTE_TO_DWORD(1), N := #val_1);
+	
+	
+END_FUNCTION
+

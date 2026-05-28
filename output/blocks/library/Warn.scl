@@ -1,0 +1,10 @@
+FUNCTION "Warn" : VOID
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+VAR_INPUT
+    val  : Int;
+END_VAR
+BEGIN
+
+"HMI".warn := SHL(IN := BYTE_TO_DWORD(1), N := #val);
+END_FUNCTION

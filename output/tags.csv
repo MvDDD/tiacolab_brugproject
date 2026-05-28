@@ -1,21 +1,8 @@
-HMI_screen_number,Default Tagtable,Word,false,false,false,MW1100,
-HMI_popup,Default Tagtable,Word,false,false,false,MW1102,
-HMI_result,Default Tagtable,Word,false,false,false,MW1104,
-errorstatus,Default Tagtable,Word,false,false,false,MW1004,error statuscode
-ProgramCounter,Default Tagtable,Word,false,false,false,MW1008,programcounter
-SubProgramCounter,Default Tagtable,Word,false,false,false,MW1012,hmi popup returnvalue
-ErrorTempCounter,Default Tagtable,Word,false,false,false,MW1016,error state save
-em_stop,Default Tagtable,Bool,false,false,false,I0.0,
-Reset Button,Default Tagtable,Bool,false,false,false,I0.1,
-Gate Closed,Default Tagtable,Bool,false,false,false,I0.2,slagboom is open?
-LightSwitch Left,Default Tagtable,Bool,false,false,false,I0.3,switch for boat left
-LightSwitch Middle,Default Tagtable,Bool,false,false,false,I0.4,switch for boat middle
-LightSwitch Right,Default Tagtable,Bool,false,false,false,I0.5,switch for boat right
-homing sensor,Default Tagtable,Bool,false,false,false,I0.6,
-Open Gate,Default Tagtable,Bool,false,false,false,Q0.0,openen van de slagboom
-Road_Yellow,Default Tagtable,Bool,false,false,false,Q0.1,
-Road_Green,Default Tagtable,Bool,false,false,false,Q0.2,
-Road_Red,Default Tagtable,Bool,false,false,false,Q0.3,
-Water_Red_Top,Default Tagtable,Bool,false,false,false,Q0.4,
-Water_Red_Bottom,Default Tagtable,Bool,false,false,false,Q0.5,
-Water_Green,Default Tagtable,Bool,false,false,false,Q0.6,
+tagname,Default Tagtable,type,false,false,false,address,comment
+progcounter0,Default Tagtable,Word,false,false,false,MW1000,first counter
+progcounter1,Default Tagtable,Word,false,false,false,MW1002,second counter
+progcounter2,Default Tagtable,Word,false,false,false,MW1004,third counter
+HMI_result,Default Tagtable,Word,false,false,false,MW1006,hmi button
+HMI_popup,Default Tagtable,Word,false,false,false,MW1008,hmi popup trigger
+HMI_popup_result,Default Tagtable,Word,false,false,false,MW1010,hmi popup result
+tagname,Default Tagtable,type,false,false,false,address,comment

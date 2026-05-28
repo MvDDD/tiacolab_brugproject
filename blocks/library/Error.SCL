@@ -1,0 +1,4 @@
+﻿num : input Int;
+RETURN VOID;
+
+"HMI".error := SHL(IN:=BYTE_TO_DWORD(1), N:=#num);

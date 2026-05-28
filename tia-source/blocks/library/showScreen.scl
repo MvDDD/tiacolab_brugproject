@@ -1,0 +1,17 @@
+﻿FUNCTION "showScreen" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      num : UInt;
+   END_VAR
+
+
+BEGIN
+	"HMI_Screen_Number" := #num;
+	"HMI".messageBox[0] := 51;
+	"HMI".messageBox[1] := #num+1;
+	"HMI".messageBox[2] := 0;
+	"HMI".messageBox[3] := 0;
+	
+END_FUNCTION
+

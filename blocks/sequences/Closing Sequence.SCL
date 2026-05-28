@@ -1,0 +1,43 @@
+﻿RETURN Bool;
+
+
+%RETURN FALSE;
+	
+CASE "progcounter1" OF
+	0: // boat traffic light sequence!!!
+		
+		;
+	10:
+		"MC_MoveAbsolute_DB"(Axis:="BrugAansturing_axis_Rik",
+							 Execute:=TRUE,
+							 Position:=0,
+							 Velocity:="Servo_Velocity"
+							 (*Direction:=_int_in_,
+							 Done=>_bool_out_,
+							 Busy=>_bool_out_,
+							 CommandAborted=>_bool_out_,
+							 Error=>_bool_out_,
+							 ErrorID=>_word_out_,
+							 ErrorInfo=>_word_out*));
+		IF "BrugAansturing_axis_Rik".StatusBits.Done THEN
+			"progcounter1" := 20;
+		END_IF
+		;
+	20:
+		IF "timer"(T#2s) THEN
+			"progcounter1" := 30;
+		END_IF
+		;
+	30:
+		IF "gates"(1) THEN
+			"progcounter1" := 40;
+		END_IF
+		;
+	40:
+		"Road_Green" := TRUE;
+		"Road_Red" := FALSE;
+		"progcounter1" := 0;
+		%RETURN TRUE;
+END_CASE;
+
+

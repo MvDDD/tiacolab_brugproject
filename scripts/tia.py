@@ -1,26 +1,10 @@
 import os
 import siemens_tia_scripting as tia
 import time
-import sys
 
 portalversion = list(sorted([item.split()[1] for item in os.listdir("C:\\Program Files\\Siemens\\Automation") if item.startswith("Portal")], key=lambda s: int(s[1:])))[-1]
 
 
-<<<<<<< Updated upstream
-=======
-
-
-
-
-
-
-
-
-
-
-#import sys;sys.exit(0)
-import siemens_tia_scripting as tia
->>>>>>> Stashed changes
 #tia.set_logging("./tia.log", False)
 # tia.Enums.ExportFormats.ExternalSource
 # tia.Enums.ExportFormats.SimaticSD
@@ -48,11 +32,11 @@ try:
     portal = tia.attach_portal()
     try:
         project = portal.get_project()
-        if project is not None:
-            if project.get_property(name="Path") != os.path.join(os.getcwd(),"template", "template.ap20"):
-                project.save()
-                project.close()
-                project = portal.open_project(os.path.join(os.getcwd(), "template", "template.ap20"))
+        #if project is not None:
+        #    if project.get_property(name="Path") != os.path.join(os.getcwd(),"template", "template.ap20"):
+       #         project.save()
+       #         project.close()
+       #         project = portal.open_project(os.path.join(os.getcwd(), "template", "template.ap20"))
     except Exception as e:
         project = portal.open_project(os.path.join(os.getcwd(), "template", "template.ap20"))
 except Exception as e:
@@ -92,24 +76,29 @@ plc.open_device_editor()
 #plc.import_blocks(os.path.join(os.getcwd(), "output", "blocks"))
 blocks = plc.get_program_blocks()
 tagtables = plc.get_plc_tag_tables()
-datablocks = plc.get_system_blocks()
 
 
 for block in blocks:
-   if block.get_property(name="ProgrammingLanguage") == "SCL":
+    if block.get_property(name="ProgrammingLanguage") in ["SCL", "DB"]:
         if not block.is_consistent():
-            block.compile()
+            print("please compile", block.get_name(), "\n automated compile always crashes tiaportal")
+            block.show_in_editor()
+            while not block.is_consistent(): # wait until block is consistent and thus ready for export
+                time.sleep(1)
 
 
 for block in blocks:
-    if block.get_property(name="ProgrammingLanguage") == "SCL":
+    if block.get_property(name="ProgrammingLanguage") in ["SCL", "DB"]:
         print(f"'{block.get_name()}', '{block.get_path_full()}', '{block.get_property(name='ProgrammingLanguage')}'")
-        block.export(os.path.join(os.getcwd(), "tia-source", "blocks"), tia.Enums.ExportOptions.WithDefaults, tia.Enums.ExportFormats.ExternalSource, True)
+        block.export(os.path.join(os.getcwd(), "tia-source", "blocks", block.get_property(name="ProgrammingLanguage")), tia.Enums.ExportOptions.WithDefaults, tia.Enums.ExportFormats.ExternalSource, True)
         print(block.get_property(name="SecondaryType"))
 
 for table in tagtables:
-    table.export(os.path.join(os.getcwd(), "tia-source", "tagtables"), tia.Enums.ExportOptions.WithDefaults, tia.Enums.ExportFormats.SimaticML, True)
+    print(table.export(os.path.join(os.getcwd(), "tia-source", "tagtables"), tia.Enums.ExportOptions.WithDefaults, tia.Enums.ExportFormats.SimaticML, True))
 
-for block in datablocks:
-    block.export(os.path.join(os.getcwd(), "tia-source", "datablocks"), tia.Enums.ExportOptions.WithDefaults, tia.Enums.ExportFormats.SimaticML, True)
+
+
+# non-exportable
+# for block in datablocks:
+#    block.export(os.path.join(os.getcwd(), "tia-source", "datablocks"), tia.Enums.ExportOptions.WithDefaults, tia.Enums.ExportFormats.SimaticML, True)
 
