@@ -1,4 +1,7 @@
 tagname,Default Tagtable,type,false,false,false,address,comment
+Brugaansturing_axis_IN,Default Tagtable,PD_TEL3_IN,false,false,false,%I256.0,
+Brugaansturing_axis_OUT,Default Tagtable,PD_TEL3_OUT,false,false,false,%Q256.0,
+tagname,Default Tagtable,type,false,false,false,address,comment
 progcounter0,Default Tagtable,Word,false,false,false,MW1000,first counter
 progcounter1,Default Tagtable,Word,false,false,false,MW1002,second counter
 progcounter2,Default Tagtable,Word,false,false,false,MW1004,third counter

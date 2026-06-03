@@ -7,7 +7,7 @@ import siemens_tia_scripting as tia
 import time
 from tqdm import tqdm
 
-
+sys.argv[1:] = ["rik", "d"]
 
 blocks_input_dir="blocks"
 blocks_output_dir="output/blocks"
@@ -26,7 +26,8 @@ def tqdm2(iterable, **kwargs):
 	try:
 		if "position" not in kwargs:
 			kwargs["position"] = tqdm2_depth
-
+		if "leave" not in kwargs:
+			kwargs["leave"] = False
 		return tqdm(iterable, **kwargs)
 	finally:
 		tqdm2_depth -= 1

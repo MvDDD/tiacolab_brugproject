@@ -7,15 +7,15 @@ specialname,tagname,type,address,type,address,comment
 %EM_DOWN%,"""Y32""",,,Bool,%I0.4,
 %ENDSW_OPEN%,"""eindsensor brug open""",,,Bool,%I0.5
 %ENDSW_CLOSED%,"""eindsensor brug dicht""",,,Bool,%I0.6
-%BOAT_LEFT%,"""bootsensor links""",,,Bool,%I0.7
-%BOAT_CENTER%,"""bootsensor midden""",,,Bool,%I1.0
-%BOAT_RIGHT%,"""bootsensor rechts""",,,Bool,%I1.1
+%BOAT_L%,"""bootsensor links""",,,Bool,%I0.7
+%BOAT_C%,"""bootsensor midden""",,,Bool,%I1.0
+%BOAT_R%,"""bootsensor rechts""",,,Bool,%I1.1
 %GATE_CLOSED%,"""slagboom dicht""",,,Bool,%I1.2
 %GATE_OUT%,"""ventiel slagboom""",,,Bool,%Q0.0
-,,,,Bool,%Q0.1
-,,,,Bool,%Q0.2
-,,,,Bool,%Q0.3
-,,,,Bool,%Q0.4
-,,,,Bool,%Q0.5
-,,,,Bool,%Q0.6
-,,,,Bool,%Q0.7
+%ROAD_G%,"""groen weg""",,,Bool,%Q0.1
+%ROAD_Y%,"""geel weg""",,,Bool,%Q0.2
+%ROAD_R%,"""rood weg""",,,Bool,%Q0.3
+%WATER_R_L%,"""water rood""",,,Bool,%Q0.4
+%WATER_G_L%,"""water groen""",,,Bool,%Q0.5
+%WATER_R_R%,water rood,,,Bool,%Q0.6
+%WATER_G_R%,water groen,,,Bool,%Q0.7

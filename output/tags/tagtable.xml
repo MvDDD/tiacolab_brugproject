@@ -30,12 +30,12 @@
                 </SW.Tags.PlcTag>
                 <SW.Tags.PlcTag ID="5" CompositionName="Tags">
                     <AttributeList>
-                        <DataTypeName>Word</DataTypeName>
+                        <DataTypeName>PD_TEL3_IN</DataTypeName>
                         <ExternalAccessible>true</ExternalAccessible>
                         <ExternalVisible>true</ExternalVisible>
                         <ExternalWritable>true</ExternalWritable>
-                        <LogicalAddress>MW1000</LogicalAddress>
-                        <Name>progcounter0</Name>
+                        <LogicalAddress>%I256.0</LogicalAddress>
+                        <Name>Brugaansturing_axis_IN</Name>
                     </AttributeList>
                     <ObjectList>
                         <MultilingualText ID="6" CompositionName="Comment">
@@ -43,7 +43,7 @@
                                 <MultilingualTextItem ID="7" CompositionName="Items">
                                     <AttributeList>
                                       <Culture>en-US</Culture>
-                                      <Text>first counter</Text>
+                                      <Text></Text>
                                     </AttributeList>
                                 </MultilingualTextItem>
                             </ObjectList>
@@ -52,12 +52,12 @@
                 </SW.Tags.PlcTag>
                 <SW.Tags.PlcTag ID="8" CompositionName="Tags">
                     <AttributeList>
-                        <DataTypeName>Word</DataTypeName>
+                        <DataTypeName>PD_TEL3_OUT</DataTypeName>
                         <ExternalAccessible>true</ExternalAccessible>
                         <ExternalVisible>true</ExternalVisible>
                         <ExternalWritable>true</ExternalWritable>
-                        <LogicalAddress>MW1002</LogicalAddress>
-                        <Name>progcounter1</Name>
+                        <LogicalAddress>%Q256.0</LogicalAddress>
+                        <Name>Brugaansturing_axis_OUT</Name>
                     </AttributeList>
                     <ObjectList>
                         <MultilingualText ID="9" CompositionName="Comment">
@@ -65,7 +65,7 @@
                                 <MultilingualTextItem ID="10" CompositionName="Items">
                                     <AttributeList>
                                       <Culture>en-US</Culture>
-                                      <Text>second counter</Text>
+                                      <Text></Text>
                                     </AttributeList>
                                 </MultilingualTextItem>
                             </ObjectList>
@@ -74,12 +74,12 @@
                 </SW.Tags.PlcTag>
                 <SW.Tags.PlcTag ID="11" CompositionName="Tags">
                     <AttributeList>
-                        <DataTypeName>Word</DataTypeName>
+                        <DataTypeName>type</DataTypeName>
                         <ExternalAccessible>true</ExternalAccessible>
                         <ExternalVisible>true</ExternalVisible>
                         <ExternalWritable>true</ExternalWritable>
-                        <LogicalAddress>MW1004</LogicalAddress>
-                        <Name>progcounter2</Name>
+                        <LogicalAddress>address</LogicalAddress>
+                        <Name>tagname</Name>
                     </AttributeList>
                     <ObjectList>
                         <MultilingualText ID="12" CompositionName="Comment">
@@ -87,7 +87,7 @@
                                 <MultilingualTextItem ID="13" CompositionName="Items">
                                     <AttributeList>
                                       <Culture>en-US</Culture>
-                                      <Text>third counter</Text>
+                                      <Text>comment</Text>
                                     </AttributeList>
                                 </MultilingualTextItem>
                             </ObjectList>
@@ -100,8 +100,8 @@
                         <ExternalAccessible>true</ExternalAccessible>
                         <ExternalVisible>true</ExternalVisible>
                         <ExternalWritable>true</ExternalWritable>
-                        <LogicalAddress>MW1006</LogicalAddress>
-                        <Name>HMI_result</Name>
+                        <LogicalAddress>MW1000</LogicalAddress>
+                        <Name>progcounter0</Name>
                     </AttributeList>
                     <ObjectList>
                         <MultilingualText ID="15" CompositionName="Comment">
@@ -109,7 +109,7 @@
                                 <MultilingualTextItem ID="16" CompositionName="Items">
                                     <AttributeList>
                                       <Culture>en-US</Culture>
-                                      <Text>hmi button</Text>
+                                      <Text>first counter</Text>
                                     </AttributeList>
                                 </MultilingualTextItem>
                             </ObjectList>
@@ -122,8 +122,8 @@
                         <ExternalAccessible>true</ExternalAccessible>
                         <ExternalVisible>true</ExternalVisible>
                         <ExternalWritable>true</ExternalWritable>
-                        <LogicalAddress>MW1008</LogicalAddress>
-                        <Name>HMI_popup</Name>
+                        <LogicalAddress>MW1002</LogicalAddress>
+                        <Name>progcounter1</Name>
                     </AttributeList>
                     <ObjectList>
                         <MultilingualText ID="18" CompositionName="Comment">
@@ -131,7 +131,7 @@
                                 <MultilingualTextItem ID="19" CompositionName="Items">
                                     <AttributeList>
                                       <Culture>en-US</Culture>
-                                      <Text>hmi popup trigger</Text>
+                                      <Text>second counter</Text>
                                     </AttributeList>
                                 </MultilingualTextItem>
                             </ObjectList>
@@ -144,13 +144,79 @@
                         <ExternalAccessible>true</ExternalAccessible>
                         <ExternalVisible>true</ExternalVisible>
                         <ExternalWritable>true</ExternalWritable>
-                        <LogicalAddress>MW1010</LogicalAddress>
-                        <Name>HMI_popup_result</Name>
+                        <LogicalAddress>MW1004</LogicalAddress>
+                        <Name>progcounter2</Name>
                     </AttributeList>
                     <ObjectList>
                         <MultilingualText ID="21" CompositionName="Comment">
                             <ObjectList>
                                 <MultilingualTextItem ID="22" CompositionName="Items">
+                                    <AttributeList>
+                                      <Culture>en-US</Culture>
+                                      <Text>third counter</Text>
+                                    </AttributeList>
+                                </MultilingualTextItem>
+                            </ObjectList>
+                        </MultilingualText>
+                    </ObjectList>
+                </SW.Tags.PlcTag>
+                <SW.Tags.PlcTag ID="23" CompositionName="Tags">
+                    <AttributeList>
+                        <DataTypeName>Word</DataTypeName>
+                        <ExternalAccessible>true</ExternalAccessible>
+                        <ExternalVisible>true</ExternalVisible>
+                        <ExternalWritable>true</ExternalWritable>
+                        <LogicalAddress>MW1006</LogicalAddress>
+                        <Name>HMI_result</Name>
+                    </AttributeList>
+                    <ObjectList>
+                        <MultilingualText ID="24" CompositionName="Comment">
+                            <ObjectList>
+                                <MultilingualTextItem ID="25" CompositionName="Items">
+                                    <AttributeList>
+                                      <Culture>en-US</Culture>
+                                      <Text>hmi button</Text>
+                                    </AttributeList>
+                                </MultilingualTextItem>
+                            </ObjectList>
+                        </MultilingualText>
+                    </ObjectList>
+                </SW.Tags.PlcTag>
+                <SW.Tags.PlcTag ID="26" CompositionName="Tags">
+                    <AttributeList>
+                        <DataTypeName>Word</DataTypeName>
+                        <ExternalAccessible>true</ExternalAccessible>
+                        <ExternalVisible>true</ExternalVisible>
+                        <ExternalWritable>true</ExternalWritable>
+                        <LogicalAddress>MW1008</LogicalAddress>
+                        <Name>HMI_popup</Name>
+                    </AttributeList>
+                    <ObjectList>
+                        <MultilingualText ID="27" CompositionName="Comment">
+                            <ObjectList>
+                                <MultilingualTextItem ID="28" CompositionName="Items">
+                                    <AttributeList>
+                                      <Culture>en-US</Culture>
+                                      <Text>hmi popup trigger</Text>
+                                    </AttributeList>
+                                </MultilingualTextItem>
+                            </ObjectList>
+                        </MultilingualText>
+                    </ObjectList>
+                </SW.Tags.PlcTag>
+                <SW.Tags.PlcTag ID="29" CompositionName="Tags">
+                    <AttributeList>
+                        <DataTypeName>Word</DataTypeName>
+                        <ExternalAccessible>true</ExternalAccessible>
+                        <ExternalVisible>true</ExternalVisible>
+                        <ExternalWritable>true</ExternalWritable>
+                        <LogicalAddress>MW1010</LogicalAddress>
+                        <Name>HMI_popup_result</Name>
+                    </AttributeList>
+                    <ObjectList>
+                        <MultilingualText ID="30" CompositionName="Comment">
+                            <ObjectList>
+                                <MultilingualTextItem ID="31" CompositionName="Items">
                                     <AttributeList>
                                       <Culture>en-US</Culture>
                                       <Text>hmi popup result</Text>
@@ -160,7 +226,7 @@
                         </MultilingualText>
                     </ObjectList>
                 </SW.Tags.PlcTag>
-                <SW.Tags.PlcTag ID="23" CompositionName="Tags">
+                <SW.Tags.PlcTag ID="32" CompositionName="Tags">
                     <AttributeList>
                         <DataTypeName>type</DataTypeName>
                         <ExternalAccessible>true</ExternalAccessible>
@@ -170,9 +236,9 @@
                         <Name>tagname</Name>
                     </AttributeList>
                     <ObjectList>
-                        <MultilingualText ID="24" CompositionName="Comment">
+                        <MultilingualText ID="33" CompositionName="Comment">
                             <ObjectList>
-                                <MultilingualTextItem ID="25" CompositionName="Items">
+                                <MultilingualTextItem ID="34" CompositionName="Items">
                                     <AttributeList>
                                       <Culture>en-US</Culture>
                                       <Text>comment</Text>

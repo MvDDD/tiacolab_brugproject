@@ -1,0 +1,4 @@
+,,| rik -,-------|,|mark,--------|
+specialname,tagname,type,address,type,address,comment
+%AXIS_IN%,Brugaansturing_axis_IN,PD_TEL3_IN,%I256.0,PD_TEL3_IN,%I256.0
+%AXIS_OUT%,Brugaansturing_axis_OUT,PD_TEL3_OUT,%Q256.0,PD_TEL3_OUT,%Q256.0
