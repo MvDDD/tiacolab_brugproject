@@ -1,0 +1,154 @@
+abort : input Bool;
+return Bool;
+
+// Check if the signal is currently TRUE and was FALSE in the previous scan
+// IF "LightSwitch_L" AND NOT "Old_LS_L" THEN
+//     "Boat_Counter" := "Boat_Counter" + 1;
+// END_IF;
+
+// IF "LightSwitch_R" and NOT "Old_LS_R" THEN
+//     "Boat_Counter" := "Boat_Counter" + 1;
+// END_IF;
+
+
+// Update the previous signal memory for the next scan cycle
+// "Old_LS_L" := "LightSwitch_L";
+// "Old_LS_R" := "LightSwitch_R";
+
+// Reset logic
+//IF "Reset Button" THEN
+ //   "Boat_Counter" := 0;
+//END_IF;
+
+
+IF "HMI_result" <> 0 AND "HMI_Screen_Number" <> 2 THEN
+	IF "HMI_result" = 3 THEN // if stop pressed:
+		"Stop_Requested" = 1;
+		"HMI_result" = 0;
+	end_if;
+end_if;
+
+CASE "progcounter0" OF
+	0:
+		IF "HMI_result" <> 0 AND "HMI_Screen_Number" <> 2 THEN
+			CASE "HMI_result" OF
+				0:
+					"show_screen"(0);
+				1:
+					"progcounter0" = 1; // START
+			END_CASE;
+			"HMI_result" = 0;
+		END_IF;
+
+	1: //START
+        if "stop_requested" THEN
+            "ProgramCounter0" := 0;
+            "stop_requested" := 0;
+        end_if;
+		if "bootsensor links" THEN
+			// "boat_counter" += 1;
+			// "old_L" := 1;
+			// boat arrived left
+			"progcounter0" = 100;
+		elsif "bootsensor rechts" THEN
+            "progcounter0" = 200;  
+			// boat arrived right
+		end_if;
+			
+
+	100:
+		if "Opening Sequence"() THEN
+			"progcounter0" = 101;
+		end_if;
+	101:
+		"water_green_left" := 1;
+		"water_red_left" := 0;
+		
+		if NOT "bootsensor links" THEN
+            "boat_counter" += 1;
+			"progcounter0" = 102;
+		END_IF;
+	102:
+		// rising edge midden{blue, 3}
+		if "bootsensor midden" and not "Old_LS_M" THEN
+			"Old_LS_M" := 1
+		end_if;
+		// falling edge midden{blue, 4}
+		if not "bootsensor midden" and "Old_LS_M" THEN
+			"boat_counter" -= 1;
+			"Old_LS_M" := 0
+		end_if;
+		
+		// rising edge links {blue, 4}
+		if "bootsensor links" and not "Old_LS_L" THEN
+			"Old_LS_L" := 1
+			"boat_counter" += 1;
+		end_if;
+		//falling edge links {blue, 3}
+		if not "bootsensor links" and "Old_LS_L" THEN
+			"Old_LS_L" := 0
+		end_if;
+				
+		// no more boats
+		if "boat_counter" = 0 THEN
+			"water_green_left" := 0;
+			"water_red_left" := 1;
+			"progcounter0" = 103;
+		end_if;
+	103:
+		if "bootsensor rechts" THEN
+			"progcounter0" = 201;
+		else
+			"progcounter0" = 300;
+		end_if;
+		
+	200:
+		if "Opening Sequence"() THEN
+			"progcounter0" = 201;
+		end_if;
+	201:
+		"water_green_left" := 1;
+		"water_red_left" := 0;
+		if NOT "bootsensor rechts" THEN
+			"progcounter0" = 202;
+		END_IF;
+	202:
+		// rising edge midden{blue, 3}
+		if "bootsensor midden" and not "Old_LS_M" THEN
+			"Old_LS_M" := 1
+		end_if;
+		// falling edge midden{blue, 4}
+		if not "bootsensor midden" and "Old_LS_M" THEN
+			"boat_counter" -= 1;
+			"Old_LS_M" := 0
+		end_if;
+		
+		// rising edge rechts {blue, 4}
+		if "bootsensor rechts" and not "Old_LS_R" THEN
+			"Old_LS_R" := 1
+			"boat_counter" += 1;
+		end_if;
+		//falling edge rechts {blue, 3}
+		if not "bootsensor rechts" and "Old_LS_R" THEN
+			"Old_LS_R" := 0
+		end_if;
+				
+		// no more boats
+		if "boat_counter" = 0 THEN
+			"water_green_right" := 0;
+			"water_red_right" := 1;
+			"progcounter0" = 203;
+		end_if;
+	203:
+		if "bootsensor links" THEN
+			"progcounter0" = 101;
+		else
+			"progcounter0" = 300;
+		end_if;
+
+	300:
+		if "Closing Sequence"() THEN
+			"progcounter0" := 1;
+		end_if;
+		;
+end_case;

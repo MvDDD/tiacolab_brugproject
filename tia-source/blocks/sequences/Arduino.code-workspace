@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "../../../../../Arduino"
+		},
+		{
+			"name": "260524-151039-nano_every",
+			"path": "../../../../../PlatformIO/Projects/260524-151039-nano_every"
+		}
+	],
+	"settings": {}
+}
